@@ -7,7 +7,9 @@ use App\Http\Controllers\homecontroller;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\logincontroller;
 use App\Http\Controllers\officeprofileController;
+use App\Http\Controllers\PersonController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,6 +35,9 @@ Route::post('logout', [logincontroller::class, 'actionlogout'])->name('logout')-
 Route::get('register', [RegisterController::class, 'register'])->name('register');
 Route::post('register/action', [RegisterController::class, 'actionregister'])->name('actionregister');
 Route::get('/home', [homecontroller::class, 'index'])->name('home');
+Route::get('/gantiPassword',[UserController::class,'showchangepasswordform'])->middleware('auth');
+Route::post('/gantiPassword',[UserController::class,'changepassword'])->name('changepassword')->middleware('auth');
+
 
     Route::resource('absen', AbsensiController::class);
 
@@ -42,6 +47,8 @@ Route::get('/about', [officeprofileController::class, 'index'])->name('about');
 
 Route::get('/chat', [ChatController::class, 'index']);
 Route::post('/chat/send', [ChatController::class, 'sendMessage']);
+
+Route::resource('pegawai', PersonController::class);
 
     Route::get('/cetak', [cetakcontroller::class, 'cetak'])->name('cetak')->middleware('admin');
 

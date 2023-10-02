@@ -39,15 +39,21 @@ class AbsensiController extends Controller
             'nama_pegawai' =>'required',
             'tanggal_pegawai'=>'required',
             'nama_jabatan' => 'required',
-            'keterangan_pegawai' => 'required'
+            'alamat'=> 'required',
+            'keterangan_pegawai' => 'required',
+            'keterangan_tambahan'=>'nullable',
+            'created_at' => 'nullable'
         ]);
 
-        DB::table('absens')->insert([
+        absen::create([
             'no_pegawai'=>$request->no_pegawai,
             'nama_pegawai'=>$request->nama_pegawai,
             'tanggal_pegawai'=>$request->tanggal_pegawai,
             'nama_jabatan'=>$request->nama_jabatan,
-            'keterangan_pegawai'=>$request->keterangan_pegawai
+            'alamat'=>$request->alamat,
+            'keterangan_pegawai'=>$request->keterangan_pegawai,
+            'keterangan_tambahan'=>$request->keterangan_tambahan,
+            'created_at'=>$request->created_at
         ]);
         Alert :: success('success','data berhasil disimpan');
         return redirect()->route('absen.index');
@@ -85,7 +91,9 @@ class AbsensiController extends Controller
             'nama_pegawai' =>'required',
             'tanggal_pegawai'=>'required',
             'nama_jabatan'=>'required',
-            'keterangan_pegawai' => 'required'
+            'alamat'=>'required',
+            'keterangan_pegawai' => 'required',
+            'keterangan_tambahan'=>'nullable'
         ]);
 
         $absen=absen::find($id);
@@ -94,7 +102,9 @@ class AbsensiController extends Controller
             'nama_pegawai'=>$request->nama_pegawai,
             'tanggal_pegawai'=>$request->tanggal_pegawai,
             'nama_jabatan'=>$request->nama_jabatan,
-            'keterangan_pegawai'=>$request->keterangan_pegawai
+            'alamat'=>$request->alamat,
+            'keterangan_pegawai'=>$request->keterangan_pegawai,
+            'keterangan_tambahan'=>$request->keterangan_tambahan
         ]);
        // Alert :: success('success','data berhasil diedit');
         return redirect()->route('absen.index');

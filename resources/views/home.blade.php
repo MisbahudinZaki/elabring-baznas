@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <a href="{{route('cetak')}}" class="btn btn-primary"><i class="fas fa-regular fa-print"></i>cetak</a>
             <div class="card">
-                <div class="card-header">Anda login sebagai: <b>{{Auth::user()->status}}</b></div>
+                <div class="card-header">Selamat datang <b>{{Auth::user()->name}}</b>, Anda login sebagai: <b>{{Auth::user()->status}}</b></div>
 
                 <div class="card-body">
                     <table class="table table-bordered">
@@ -14,6 +14,7 @@
                             <tr>
                             <th scope="col">NAMA</th>
                             <th scope="col">TANGGAL</th>
+                            <th scope="col">ALAMAT</th>
                             <th scope="col">KETERANGAN</th>
                             <th scope="col">AKSI</th>
                             </tr>
@@ -23,6 +24,7 @@
                                 <tr>
                                     <td>{{$abs->nama_pegawai}}</td>
                                     <td>{{$abs->tanggal_pegawai}}</td>
+                                    <td>{{$abs->alamat}}</td>
                                     <td>{{$abs->keterangan_pegawai}}</td>
                                     <td><a href="{{route('absen.show', $abs->id)}}" class="btn btn-md btn-primary"><i class="far fa-eye"></i> view</a></td>
                                 </tr>

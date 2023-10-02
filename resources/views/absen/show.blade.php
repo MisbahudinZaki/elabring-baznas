@@ -28,10 +28,20 @@
                                 <input type="text" name="nama_jabatan" class="form-control @error('nama_jabatan') is-invalid @enderror" value="{{old('nama_jabatan', $absen->nama_jabatan)}}" placeholder="masukan nama_jabatan" readonly>
                             </div>
 
+                            <div class="form-group">
+                                <label class="font-weight-bold">alamat</label>
+                                <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" value="{{old('alamat',$absen->alamat)}}" placeholder="masukan alamat" readonly>
+                            </div>
+
 
                             <div class="form-group">
-                                <label class="font-weight-bold">keterangan pegawai</label>
+                                <label class="font-weight-bold">keterangan</label>
                                 <input type="text" class="form-control @error('keterangan_pegawai') is-invalid  @enderror" value="{{old('keterangan_pegawai', $absen->keterangan_pegawai)}}" name="keterangan_pegawai" placeholder="masukkan keterangan" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="font-weight-bold">Keterangan Tambahan</label>
+                                <textarea class="form-control @error('keterangan_tambahan') is-invalid @enderror" name="keterangan_tambahan" id="keterangan_tambahan" rows="5" placeholder="diisi ketika berhalangan hadir atau sakit" readonly>{{old('keterangan_tambahan',$absen->keterangan_tambahan)}}</textarea>
                             </div>
 
 

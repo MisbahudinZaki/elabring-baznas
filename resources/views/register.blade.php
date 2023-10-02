@@ -21,12 +21,17 @@
             <form action="{{route('actionregister')}}" method="post">
             @csrf
                 <div class="form-group">
-                    <label><i class=""></i> Name</label>
-                    <input type="text" name="name" class="form-control" placeholder="name" required="">
+                    <label><i class="fa fa-user"></i> no</label>
+                    <input type="number" name="id_user" class="form-control" placeholder="" required="">
                 </div>
                 <div class="form-group">
+                    <label><i class="fa fa-user"></i> Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="name" required="">
+                </div>
+
+                <div class="form-group">
                     <label><i class="fa fa-envelope"></i> Email</label>
-                    <input type="email" name="email" class="form-control" placeholder="Email" required="">
+                    <input type="email" name="email" class="form-control" value="@gmail.com" placeholder="Email" required="">
                 </div>
                 <div class="form-group">
                     <label><i class="fa fa-key"></i> Password</label>
@@ -34,11 +39,11 @@
                 </div>
                 <div class="form-group">
                     <label><i class="fa fa-address-book"></i> Status</label>
-                    <input type="text" name="status" class="form-control" value="Guest" placeholder="Status" readonly>
+                    <input type="text" name="status" class="form-control" value="pegawai" placeholder="Status" readonly>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-user"></i> Register</button>
                 <hr>
-                <p class="text-center">Sudah punya akun silahkan <a href="#">Login Disini!</a></p>
+                <p class="text-center">Sudah punya akun silahkan <a href="{{route('login')}}">Login Disini!</a></p>
             </form>
         </div>
     </div>

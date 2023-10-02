@@ -23,6 +23,7 @@
                 <th scope="col">NO PEGAWAI</th>
                 <th scope="col">NAMA</th>
                 <th scope="col">JABATAN</th>
+                <th scope="col">ALAMAT</th>
                 <th scope="col">KETERANGAN</th>
             </tr>
             </thead>
@@ -32,6 +33,7 @@
                         <td>{{$ab->no_pegawai}}</td>
                         <td>{{$ab->nama_pegawai}}</td>
                         <td>{{$ab->nama_jabatan}}</td>
+                        <td>{{$ab->alamat}}</td>
                         <td>{{$ab->keterangan_pegawai}}</td>
                     </tr>
                 @endforeach

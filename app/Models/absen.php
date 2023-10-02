@@ -14,7 +14,10 @@ class absen extends Model
         'nama_pegawai',
         'jabatan_id',
         'tanggal_pegawai',
-        'keterangan_pegawai'
+        'nama_jabatan',
+        'alamat',
+        'keterangan_pegawai',
+        'keterangan_tambahan',
     ];
 
 

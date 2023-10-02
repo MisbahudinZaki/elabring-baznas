@@ -2,6 +2,8 @@
 
 namespace App\Http;
 
+use App\Models\absen;
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -72,4 +74,23 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\AdminOnly::class,
     ];
 
+    protected function schedule(Schedule $schedule)
+{
+    $schedule->call(function () {
+        // Menghapus data siswa yang lebih tua dari 24 jam
+        absen::where('created_at'. '<=', now()->subHours(20)->delete());
+       // Student::where('created_at', '<=', now()->subHours(24))->delete();
+    })->hourly();
+}
+
+
+/*protected $commands = [
+    \App\Console\Commands\deleteoldabsens::class,
+];
+
+protected function schedule(Schedule $schedule)
+{
+    $schedule->command('absens:delete-old')->daily();
+}
+*/
 }

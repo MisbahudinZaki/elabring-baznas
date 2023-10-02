@@ -27,4 +27,6 @@ class HomeController extends Controller
         $absensi=absen::latest()->paginate(10);
         return view('home', compact('absensi'));
     }
+
+
 }

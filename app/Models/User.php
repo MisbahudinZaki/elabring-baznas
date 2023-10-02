@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'id_user',
         'email',
         'password',
         'status',
@@ -45,7 +46,7 @@ class User extends Authenticatable
     ];
 
     protected $table = 'users';
-    protected $primaryKey = 'id_user';
+    protected $primaryKey = 'id';
 
     public function isAdmin()
 {
