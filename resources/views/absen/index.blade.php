@@ -16,7 +16,7 @@
 
                    <a href="{{route('absen.create')}}" class="btn btn-md btn-success"><i class="fas fa-solid fa-plus-square"></i> Tambah</a>
 
-                    <table class="table table-bordered text-center">
+                    <table class="table table-striped text-center">
 
                         <thead class="table-dark">
                             <tr>

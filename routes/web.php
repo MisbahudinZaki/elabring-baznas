@@ -7,7 +7,7 @@ use App\Http\Controllers\homecontroller;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\logincontroller;
 use App\Http\Controllers\officeprofileController;
-use App\Http\Controllers\PersonController;
+use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -25,13 +25,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-/*Route::get('/', function () {
+Route::get('/', function () {
     return view('welcome');
-});*/
+});
 
-Route::get('/', [logincontroller::class, 'login'])->name('login');
-Route::post('actionlogin', [logincontroller::class, 'actionlogin'])->name('actionlogin');
-Route::post('logout', [logincontroller::class, 'actionlogout'])->name('logout')->middleware('auth');
+//Route::get('/', [logincontroller::class, 'login'])->name('login');
+//Route::post('actionlogin', [logincontroller::class, 'actionlogin'])->name('actionlogin');
+//Route::post('logout', [logincontroller::class, 'actionlogout'])->name('logout')->middleware('auth');
 Route::get('register', [RegisterController::class, 'register'])->name('register');
 Route::post('register/action', [RegisterController::class, 'actionregister'])->name('actionregister');
 Route::get('/home', [homecontroller::class, 'index'])->name('home');
@@ -48,10 +48,13 @@ Route::get('/about', [officeprofileController::class, 'index'])->name('about');
 Route::get('/chat', [ChatController::class, 'index']);
 Route::post('/chat/send', [ChatController::class, 'sendMessage']);
 
-Route::resource('pegawai', PersonController::class);
+Route::resource('pegawai', PegawaiController::class);
 
     Route::get('/cetak', [cetakcontroller::class, 'cetak'])->name('cetak')->middleware('admin');
-
+    Route::get('/cetakdata', [cetakcontroller::class, 'cetakform'])->name('cetak-pegawai-form')->middleware('admin');
+    Route::get('cetakdatapertanggal/{tglawal}/{tglakhir}', [cetakcontroller::class, 'cetakpegawaipertanggal'])->name('cetakpegawaipertanggal')->middleware('admin');
+  //  Route::get('/cetakpertanggal',[cetakcontroller::class, 'cetakpertanggal'])->name('cetakpertanggal')->middleware('admin');
+   // Route::get('cetakdata/{tglawal}/{tglakhir}','cetakcontroller@cetakpertanggal')->name('cetakdata');
 
 //absen->
 
@@ -64,7 +67,7 @@ Route::put('/update/{id}', [AbsensiController::class, 'update'])->name('absen.up
 Route::get('/destroy/{id}', [AbsensiController::class, 'destroy'])->name('absen.destroy');
 */
 
-//Auth::routes();
+Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

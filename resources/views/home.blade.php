@@ -4,12 +4,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <a href="{{route('cetak')}}" class="btn btn-primary"><i class="fas fa-regular fa-print"></i>cetak</a>
+            <a href="{{route('cetak-pegawai-form')}}" class="btn btn-primary"><i class="fas fa-regular fa-print"></i>cetak</a>
             <div class="card">
                 <div class="card-header">Selamat datang <b>{{Auth::user()->name}}</b>, Anda login sebagai: <b>{{Auth::user()->status}}</b></div>
 
                 <div class="card-body">
-                    <table class="table table-bordered">
+                    <table class="table table-striped">
                         <thead class="table-dark">
                             <tr>
                             <th scope="col">NAMA</th>
