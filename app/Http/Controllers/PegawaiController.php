@@ -13,7 +13,7 @@ class PegawaiController extends Controller
      */
     public function index()
     {
-        $pegawai=pegawai::all();
+        $pegawai=pegawai::with('user_id')->all();
         return view('pegawai.index', compact('pegawai'));
     }
 
@@ -58,9 +58,9 @@ class PegawaiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $pegawai=pegawai::find($id);
     }
 
     /**

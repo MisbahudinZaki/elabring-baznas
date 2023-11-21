@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\absen;
+use App\Models\absen_pulang;
 use App\Models\jabatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 //use Illuminate\Console\View\Components\Alert;
 use Alert;
 
@@ -17,7 +19,7 @@ class AbsensiController extends Controller
      */
     public function index()
     {
-        $absensi=absen::latest()->paginate(10);
+        $absensi=absen::with('absen_pulangs')->paginate(10);
         return view('absen.index', compact('absensi'));
     }
 
@@ -26,6 +28,7 @@ class AbsensiController extends Controller
      */
     public function create()
     {
+
         return view('absen.create');
     }
 
@@ -35,26 +38,43 @@ class AbsensiController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'no_pegawai' => 'required',
             'nama_pegawai' =>'required',
             'tanggal_pegawai'=>'required',
             'nama_jabatan' => 'required',
-            'alamat'=> 'required',
+            'waktu_kehadiran'=> 'required',
             'keterangan_pegawai' => 'required',
             'keterangan_tambahan'=>'nullable',
-            'created_at' => 'nullable'
+            'status'=> 'nullable',
+            'absen_pulangs_id'=> 'nullable',
+
         ]);
 
+        $entryTime = $request->input('waktu_kehadiran');
+
+        $deadline = Carbon::createFromTime(8, 0, 0);
+
+        $entryTimeCarbon = Carbon::createFromTimeString($entryTime);
+
+        if ($entryTimeCarbon > $deadline) {
+
+            $status = 'Terlambat';
+
+        } else {
+
+            $status = 'Tepat Waktu';
+        }
+
         absen::create([
-            'no_pegawai'=>$request->no_pegawai,
-            'nama_pegawai'=>$request->nama_pegawai,
-            'tanggal_pegawai'=>$request->tanggal_pegawai,
+            'nama_pegawai'=> $request->nama_pegawai,
+            'tanggal_pegawai'=> $request->tanggal_pegawai,
             'nama_jabatan'=>$request->nama_jabatan,
-            'alamat'=>$request->alamat,
             'keterangan_pegawai'=>$request->keterangan_pegawai,
             'keterangan_tambahan'=>$request->keterangan_tambahan,
-            'created_at'=>$request->created_at
+            'waktu_kehadiran' => $entryTime,
+            'status' => $status,
+            'absen_pulangs_id'=> $request->absen_pulangs_id,
         ]);
+
         Alert :: success('success','data berhasil disimpan');
         return redirect()->route('absen.index');
     }
@@ -87,22 +107,21 @@ class AbsensiController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'no_pegawai' => 'required',
             'nama_pegawai' =>'required',
             'tanggal_pegawai'=>'required',
             'nama_jabatan'=>'required',
-            'alamat'=>'required',
+
             'keterangan_pegawai' => 'required',
             'keterangan_tambahan'=>'nullable'
         ]);
 
         $absen=absen::find($id);
         $absen->update([
-            'no_pegawai'=>$request->no_pegawai,
+
             'nama_pegawai'=>$request->nama_pegawai,
             'tanggal_pegawai'=>$request->tanggal_pegawai,
             'nama_jabatan'=>$request->nama_jabatan,
-            'alamat'=>$request->alamat,
+
             'keterangan_pegawai'=>$request->keterangan_pegawai,
             'keterangan_tambahan'=>$request->keterangan_tambahan
         ]);

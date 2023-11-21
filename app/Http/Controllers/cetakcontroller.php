@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\absen;
+use App\Models\Absen_Pulang;
 use Illuminate\Http\Request;
 use Illuminate\Queue\WorkerOptions;
 
@@ -11,7 +12,8 @@ class cetakcontroller extends Controller
     public function cetak()
     {
         $absensi=absen::get();
-        return view('cetak.cetak', compact('absensi'));
+        $absplng=Absen_Pulang::get();
+        return view("cetak.cetak",compact("absensi","absplng"));
     }
 
     public function cetakform(){

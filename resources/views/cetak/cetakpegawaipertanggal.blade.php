@@ -8,7 +8,7 @@
     <style>
         table.static{
             position: relative;
-
+            orientation: landscape;
             border:2px solid black;
         }
     </style>

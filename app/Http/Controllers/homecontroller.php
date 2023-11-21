@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\absen;
+use App\Models\Absen_Pulang;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,7 +27,8 @@ class HomeController extends Controller
     public function index()
     {
         $absensi=absen::latest()->paginate(10);
-        return view('home', compact('absensi'));
+        $users=User::all();
+        return view('home', compact('absensi','users'));
     }
 
 

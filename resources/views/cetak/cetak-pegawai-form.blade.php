@@ -18,10 +18,13 @@
 
                     <a href="#" onclick="this.href='/cetakdatapertanggal/'+ document.getElementById('tglawal').value +
                     '/' + document.getElementById('tglakhir').value "
-                    target="_blank" class="btn btn-primary">cetak<i class="fas fa-print"></i></a>
+                    target="_blank" class="btn btn-primary"><i class="fas fa-print"></i>cetak</a>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
+
+
 @endsection

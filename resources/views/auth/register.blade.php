@@ -61,6 +61,15 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label for="status" class="col-md-4 col-form-label text-md-end">{{ __('Status') }}</label>
+
+                            <div class="col-md-6">
+                             <input type="text" name="status" class="form-control" value="pegawai" placeholder="Status" readonly>
+                            </div>
+                        </div>
+
+
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

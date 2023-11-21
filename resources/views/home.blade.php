@@ -5,11 +5,35 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <a href="{{route('cetak-pegawai-form')}}" class="btn btn-primary"><i class="fas fa-regular fa-print"></i>cetak</a>
+
             <div class="card">
                 <div class="card-header">Selamat datang <b>{{Auth::user()->name}}</b>, Anda login sebagai: <b>{{Auth::user()->status}}</b></div>
-
                 <div class="card-body">
+
                     <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <td style="font-size: 19px; font-family:'Times New Roman'">Nama    :   {{Auth::user()->name}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 19px; font-family:'Times New Roman'">Email    :   {{Auth::user()->email}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 19px; font-family:'Times New Roman'">Tempat/Tanggal Lahir    :   {{Auth::user()->tempat_lahir}}/{{Auth::user()->tanggal_lahir}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 19px; font-family:'Times New Roman'">Jenis Kelamin    :   {{Auth::user()->jenis_kelamin}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 19px; font-family:'Times New Roman'">Alamat Tinggal    :   {{Auth::user()->alamat_tinggal}}</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 19px; font-family:'Times New Roman'">No Hp Aktif    :   {{Auth::user()->no_hp}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                  <!--  <table class="table table-striped">
+
                         <thead class="table-dark">
                             <tr>
                             <th scope="col">NAMA</th>

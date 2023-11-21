@@ -21,10 +21,6 @@
             <form action="{{route('actionregister')}}" method="post">
             @csrf
                 <div class="form-group">
-                    <label><i class="fa fa-user"></i> no</label>
-                    <input type="number" name="id_user" class="form-control" placeholder="" required="">
-                </div>
-                <div class="form-group">
                     <label><i class="fa fa-user"></i> Name</label>
                     <input type="text" name="name" class="form-control" placeholder="name" required="">
                 </div>

@@ -11,21 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('absens', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_pegawai');
-            $table->date('tanggal_pegawai');
-            $table->string('nama_jabatan');
-            $table->string('keterangan_pegawai');
-            $table->timestamps();
+        Schema::table('absens', function (Blueprint $table) {
+            $table->time('waktu_kehadiran')->nullable();
         });
     }
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('absens');
+        Schema::table('absens', function (Blueprint $table) {
+            //
+        });
     }
 };

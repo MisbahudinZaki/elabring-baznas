@@ -57,6 +57,11 @@
                         <textarea class="form-control @error('keterangan_tambahan') is-invalid @enderror" name="keterangan_tambahan" id="keterangan_tambahan" rows="5" placeholder="diisi ketika berhalangan hadir atau sakit">{{old('keterangan_tambahan',$absen->keterangan_tambahan)}}</textarea>
                     </div>
 
+                    <div class="form-group">
+                        <label class="font-weight-bold">absen_pulangs_id</label>
+                        <input type="number" class="form-control @error('absen_pulangs_id') is-invalid  @enderror" value="{{old('absen_pulangs_id', $absen->absen_pulangs_id)}}" name="absen_pulangs_id" placeholder="massukan waktu">
+                    </div>
+
 
 
                     <button type="submit" class="btn btn-primary"><i class="fas fa-check-square"></i> save</button>

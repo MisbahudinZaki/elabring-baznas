@@ -21,16 +21,14 @@
                         <thead class="table-dark">
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">NO</th>
+
                                 <th scope="col">NAMA</th>
                                 <th scope="col">JABATAN</th>
-                                <th scope="col">ALAMAT</th>
                                 <th scope="col">TANGGAL</th>
                                 <th scope="col">KETERANGAN</th>
-                                <th scope="col"></th>
-
-
-
+                                <th scope="col">WAKTU KEHADIRAN</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Waktu pulang</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -38,17 +36,13 @@
                             @forelse ($absensi as $absen)
                                 <tr>
                                     <td>{{$absen->id}}</td>
-                                    <td>{{$absen->no_pegawai}}</td>
                                     <td>{{$absen->nama_pegawai}}</td>
                                     <td>{{$absen->nama_jabatan}}</td>
-                                    <td>{{$absen->alamat}}</td>
                                     <td>{{$absen->tanggal_pegawai}}</td>
                                     <td>{{$absen->keterangan_pegawai}}</td>
-
-
-                                    <td></td>
-
-
+                                    <td>{{$absen->waktu_kehadiran}}</td>
+                                    <td>{{$absen->status}}</td>
+                                    <td>{{$absen->absen_pulangs_id}}</td>
                                   <td>
                                     <form onsubmit="return confirm('Apakah anda yakin')" action="{{route('absen.destroy', $absen->id)}}" method="POST" enctype="multipart/form-data">
                                     @csrf
