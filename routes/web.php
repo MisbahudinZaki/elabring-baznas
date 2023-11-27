@@ -10,7 +10,7 @@ use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\logincontroller;
 use App\Http\Controllers\officeprofileController;
 use App\Http\Controllers\PegawaiController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\HitungController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -43,8 +43,8 @@ Route::resource('user', UserController::class);
 
 
     Route::resource('absen', AbsensiController::class);
-    Route::resource('absen_pulang', absenpulangController::class);
-
+    Route::get('/absen_pulang', [AbsensiController::class, 'absen_pulang'])->name('absen_pulang');
+    Route::resource('absenpulang', absenpulangController::class);
     Route::get('/jabatan', [JabatanController::class, 'index'])->name('jabatan');
 
 Route::get('/about', [officeprofileController::class, 'index'])->name('about');

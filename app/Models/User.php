@@ -18,9 +18,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'name',
         'email',
         'password',
+        'nama_jabatan',
         'tempat_lahir',
         'tanggal_lahir',
         'jenis_kelamin',
@@ -55,6 +57,11 @@ class User extends Authenticatable
     public function isAdmin()
 {
     return $this->status === 'admin'; // Gantilah dengan logika sesuai dengan penggunaan Anda.
+}
+
+public function absens()
+{
+    return $this->hasMany(absen::class);
 }
 
 }

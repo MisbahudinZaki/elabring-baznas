@@ -5,19 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class absen_pulang extends Model
+class absenpulang extends Model
 {
     use HasFactory;
 
-    protected $table = "absen_pulangs";
+    protected $table = "absenpulangs";
 
     protected $primaryKey = "id";
     protected $fillable = [
-        'nama_pegawai',
-        'tanggal_pegawai',
+        "id",
         'waktu_pulang',
-        'keterangan_pegawai',
-        'status',
+        'status_pulang',
     ];
 
     public function absen(){

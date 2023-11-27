@@ -12,10 +12,6 @@
                     @csrf
                     @method('PUT')
 
-                    <div class="form-group">
-                        <label class="font-weight-bold">no pegawai</label>
-                        <input type="text" class="form-control @error('no_pegawai') is-invalid  @enderror" value="{{old('no_pegawai', $absen->no_pegawai)}}" name="no_pegawai" placeholder="masukkan no">
-                    </div>
 
                     <div class="form-group">
                         <label class="font-weight-bold">nama pegawai</label>
@@ -33,22 +29,11 @@
                         <input type="text" name="nama_jabatan" class="form-control @error('nama_jabatan') is-invalid @enderror" value="{{old('nama_jabatan', $absen->nama_jabatan)}}" placeholder="masukan jabatan">
                     </div>
 
-                    <div class="form-group">
-                        <label class="font-weight-bold">alamat</label>
-                        <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" value="{{old('alamat', $absen->alamat)}}" placeholder="masukan alamat">
-                    </div>
 
                     <div class="form-group">
                         <label class="font-weight-bold">keterangan</label>
-                        <!--<input type="submit" class="form-control @error('keterangan_pegawai') is-invalid  @enderror" value="{{old('keterangan_pegawai')}}" name="keterangan_pegawai" placeholder="masukkan keterangan">-->
-                        <select name="keterangan_pegawai" class="form-control @error('keterangan_pegawai')
-                            is-invalid
-                        @enderror" value="{{old('keterangan_pegawai',$absen->keterangan_pegawai)}}">
-                                    <option value="">--------</option>
-                                    <option value="Hadir">Hadir</option>
-                                    <option value="Izin">Izin</option>
-                                    <option value="Sakit">Sakit</option>
-                        </select>
+
+                        <input type="text" name="keterangan_pegawai" class="form-control @error('keterangan_pegawai') is-invalid @enderror" value="{{old('keterangan_pegawai',$absen->keterangan_pegawai)}}">
                     </div>
 
 
@@ -58,8 +43,15 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="font-weight-bold">absen_pulangs_id</label>
-                        <input type="number" class="form-control @error('absen_pulangs_id') is-invalid  @enderror" value="{{old('absen_pulangs_id', $absen->absen_pulangs_id)}}" name="absen_pulangs_id" placeholder="massukan waktu">
+                        <label class="font-weight-bold">waktu kehadiran</label>
+                        <input type="time" class="form-control @error('waktu_kehadiran') is-invalid  @enderror" value="{{old('waktu_kehadiran', $absen->waktu_kehadiran)}}" name="waktu_kehadiran">
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="waktu_pulang">waktu_pulang</label>
+                        <input type="time" class="form-control @error('waktu_pulang') is-invalid @enderror" value="{{old('waktu_pulang' , $absen->waktu_pulang)}}" name="waktu_pulang" id="">
                     </div>
 
 

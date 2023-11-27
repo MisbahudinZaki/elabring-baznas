@@ -6,6 +6,7 @@ use App\Models\absen;
 use App\Models\Absen_Pulang;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -26,9 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $absensi=absen::latest()->paginate(10);
-        $users=User::all();
-        return view('home', compact('absensi','users'));
+
+        return view('home');
     }
 
 

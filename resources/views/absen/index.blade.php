@@ -28,7 +28,8 @@
                                 <th scope="col">KETERANGAN</th>
                                 <th scope="col">WAKTU KEHADIRAN</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Waktu pulang</th>
+                                <th scope="col">User Id </th>
+                                <th scope="col">Waktu Pulang</th>
                                 <th scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -42,7 +43,8 @@
                                     <td>{{$absen->keterangan_pegawai}}</td>
                                     <td>{{$absen->waktu_kehadiran}}</td>
                                     <td>{{$absen->status}}</td>
-                                    <td>{{$absen->absen_pulangs_id}}</td>
+                                    <td>{{$absen->users->id}}</td>
+                                    <td>{{$absen->waktu_pulang}}</td>
                                   <td>
                                     <form onsubmit="return confirm('Apakah anda yakin')" action="{{route('absen.destroy', $absen->id)}}" method="POST" enctype="multipart/form-data">
                                     @csrf

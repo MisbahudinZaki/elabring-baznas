@@ -17,7 +17,7 @@
 <body>
     <div class="form-group">
 
-        <p> <img src="gambar/Logo_baznas-removebg-preview.png" width="100px" alt="logo baznas"> <h1 align="center">Laporan</h1></p>
+        <h1 align="center">Kartu Laporan</h1>
         <h2 align="center">BAZNAS KABUPATEN PASAMAN</h2>
         <table class="static" align="center" rules="all" border="1px" style="width: 95%;">
             <thead>
@@ -49,9 +49,6 @@
 
         </table>
 
-        <tfoot>
-            Diketahui Dibuat diperiksa
-        </tfoot>
         </div>
 
         <!--<script type="text/javascript">

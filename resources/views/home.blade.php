@@ -9,64 +9,59 @@
             <div class="card">
                 <div class="card-header">Selamat datang <b>{{Auth::user()->name}}</b>, Anda login sebagai: <b>{{Auth::user()->status}}</b></div>
                 <div class="card-body">
-
                     <table class="table table-striped">
                         <tbody>
                             <tr>
-                                <td style="font-size: 19px; font-family:'Times New Roman'">Nama    :   {{Auth::user()->name}}</td>
+                                <td scope="row" width="200">Nama</td>
+                                <td width="20">:</td>
+                                <td>{{Auth::user()->name}}</td>
                             </tr>
                             <tr>
-                                <td style="font-size: 19px; font-family:'Times New Roman'">Email    :   {{Auth::user()->email}}</td>
+                                <td>Jenis Kelamin</td>
+                                <td>:</td>
+                                <td>{{Auth::user()->jenis_kelamin}}</td>
                             </tr>
-                            <tr>
-                                <td style="font-size: 19px; font-family:'Times New Roman'">Tempat/Tanggal Lahir    :   {{Auth::user()->tempat_lahir}}/{{Auth::user()->tanggal_lahir}}</td>
-                            </tr>
-                            <tr>
-                                <td style="font-size: 19px; font-family:'Times New Roman'">Jenis Kelamin    :   {{Auth::user()->jenis_kelamin}}</td>
-                            </tr>
-                            <tr>
-                                <td style="font-size: 19px; font-family:'Times New Roman'">Alamat Tinggal    :   {{Auth::user()->alamat_tinggal}}</td>
-                            </tr>
-                            <tr>
-                                <td style="font-size: 19px; font-family:'Times New Roman'">No Hp Aktif    :   {{Auth::user()->no_hp}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                  <!--  <table class="table table-striped">
 
-                        <thead class="table-dark">
                             <tr>
-                            <th scope="col">NAMA</th>
-                            <th scope="col">TANGGAL</th>
-                            <th scope="col">ALAMAT</th>
-                            <th scope="col">KETERANGAN</th>
-                            <th scope="col">AKSI</th>
+                                <td>Tempat/Tanggal lahir</td>
+                                <td>:</td>
+                                <td>{{Auth::user()->tempat_lahir}} / {{Auth::user()->tanggal_lahir}}</td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($absensi as $abs)
-                                <tr>
-                                    <td>{{$abs->nama_pegawai}}</td>
-                                    <td>{{$abs->tanggal_pegawai}}</td>
-                                    <td>{{$abs->alamat}}</td>
-                                    <td>{{$abs->keterangan_pegawai}}</td>
-                                    <td><a href="{{route('absen.show', $abs->id)}}" class="btn btn-md btn-primary"><i class="far fa-eye"></i> view</a></td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {{$absensi->links()}}
-                    <!--@if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
-                    {{ __('You are logged in!') }}
-                    -->
+                            <tr>
+                                <td>Jabatan</td>
+                                <td>:</td>
+                                <td>{{Auth::user()->nama_jabatan}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Alamat</td>
+                                <td>:</td>
+                                <td>{{Auth::user()->alamat_tinggal}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Email</td>
+                                <td>:</td>
+                                <td>{{Auth::user()->email}}</td>
+                            </tr>
+
+
+                            <tr>
+                                <td>No Hp</td>
+                                <td>:</td>
+                                <td>{{Auth::user()->no_hp}}</td>
+                            </tr>
+
+
+                        </tbody>
+
+
+
+
+                    </table>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
+
+
 @endsection

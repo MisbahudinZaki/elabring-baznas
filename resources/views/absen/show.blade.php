@@ -7,10 +7,6 @@
                     <div class="card-header"></div>
                     <div class="card-body">
                         <form action="{{route('absen.show', $absen->id)}}">
-                            <div class="form-group">
-                                <label class="font-weight-bold">no</label>
-                                <input type="text" class="form-control @error('no_pegawai') is-invalid  @enderror" value="{{old('no_pegawai', $absen->no_pegawai)}}" name="no_pegawai" placeholder="masukkan no" readonly>
-                            </div>
 
                             <div class="form-group">
                                 <label class="font-weight-bold">nama</label>

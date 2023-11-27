@@ -22,20 +22,19 @@ class absen extends Model
         'keterangan_tambahan',
         'waktu_pulang',
         'status_pulang',
+        'user_id',
     ];
 
-    /*
-    public function absen_pulangs(){
-        return $this->belongsTo( absen_pulang::class);
+    public function users(){
+        return $this->belongsTo(User::class);
     }
 
-    /*protected static function boot()
-    {
-        parent::boot();
+
+    public function absen_pulangs(){
+        return $this->belongsTo(absenpulang::class);
 
 
-
-    }*/
+    }
 
     protected static function boot()
     {
@@ -43,7 +42,7 @@ class absen extends Model
 
         static::creating(function ($model) {
             // Buat instance dari TabelLain dan simpan
-            $tabelLain = new absen_pulang();
+            $tabelLain = new absenpulang();
             $tabelLain->save();
 
             // Set ID TabelLain yang baru dibuat pada model TabelUtama
@@ -56,6 +55,6 @@ class absen extends Model
             $model->absen_pulangs_id = $lastNumber + 1;
 
         });
-    }*/
+    }
 
 }

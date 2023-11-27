@@ -1,43 +1,62 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\absen_pulang;
-use Illuminate\Http\Support\Facades\Storage;
+use App\Models\absen;
+use App\Models\absenpulang;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
-
-class AbsenPulangController extends Controller
+class AbsenpulangController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-            $absplngs = absen_pulang::latest()->paginate(10);
-            return view('absen_pulang.index',compact("absplngs"));
+    public function index(){
+        $absenpulang = absenpulang::latest()->paginate(10);
+        return view("absenpulang.index",compact("absenpulang"));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return view("absen_pulang.create");
+    public function create(){
+        return view('absenpulang.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         $this->validate($request,[
-            "nama_pegawai"=> "required",
-            "waktu_pulang"=> "nullable",
-            "status"=> "nullable",
+            'waktu_pulang'=> 'nullable',
+            'status_pulang'=> 'nullable',
+            ]);
 
+            $entryTime = $request->input('waktu_pulang');
 
+        $deadline = Carbon::createFromTime(16, 30, 0);
+
+        $entryTimeCarbon = Carbon::createFromTimeString($entryTime);
+
+        if ($entryTimeCarbon > $deadline) {
+
+            $status_pulang = 'Tepat Waktu';
+
+        } else {
+
+            $status_pulang = 'Pulang Cepat';
+        }
+
+        absenpulang::create([
+            'waktu_pulang'=> $entryTime,
+            'status_pulang'=> $status_pulang,
+        ]);
+    }
+
+    public function show($id){
+        $absen = absenpulang::find($id);
+        return view('absenpulang.show', compact('absen'));
+    }
+
+    public function edit(absenpulang $absenpulang){
+        return view('absenpulang.edit', compact('absenpulang'));
+    }
+
+    public function update(Request $request, $id){
+        $this->validate($request,[
+            'waktu_pulang'=> 'nullable',
+            'status_pulang'=> 'nullable',
         ]);
 
         $entryTime = $request->input('waktu_pulang');
@@ -48,51 +67,19 @@ class AbsenPulangController extends Controller
 
         if ($entryTimeCarbon > $deadline) {
 
-            $status = 'Tepat Waktu';
+            $status_pulang = 'Tepat Waktu';
 
         } else {
 
-            $status = 'Pulang Cepat';
+            $status_pulang = 'Pulang Cepat';
         }
 
-        absen_pulang::create([
-            "nama_pegawai"=>$request->nama_pegawai,
-            "waktu_pulang"=> $entryTime,
-            "status" => $status,
+        $absenpulang = absenpulang::find($id);
+        $absenpulang->update([
+            'waktu_pulang'=> $entryTime,
+            'status_pulang'=> $status_pulang,
         ]);
 
-        return redirect()->route('absen_pulang.index');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(absen_pulang $absp)
-    {
-        return view('absen_pulang.edit',compact('absp'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->route('beranda.index');
     }
 }

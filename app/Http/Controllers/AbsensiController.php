@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\absen;
-use App\Models\absen_pulang;
+use App\Models\absenpulang;
 use App\Models\jabatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use App\Models\User;
 //use Illuminate\Console\View\Components\Alert;
 use Alert;
 
@@ -19,7 +20,7 @@ class AbsensiController extends Controller
      */
     public function index()
     {
-        $absensi=absen::with('absen_pulangs')->paginate(10);
+        $absensi=absen::with('absen_pulangs','users')->paginate(10);
         return view('absen.index', compact('absensi'));
     }
 
@@ -45,7 +46,8 @@ class AbsensiController extends Controller
             'keterangan_pegawai' => 'required',
             'keterangan_tambahan'=>'nullable',
             'status'=> 'nullable',
-            'absen_pulangs_id'=> 'nullable',
+            'user_id'=> 'required',
+
 
         ]);
 
@@ -72,11 +74,11 @@ class AbsensiController extends Controller
             'keterangan_tambahan'=>$request->keterangan_tambahan,
             'waktu_kehadiran' => $entryTime,
             'status' => $status,
-            'absen_pulangs_id'=> $request->absen_pulangs_id,
+            'user_id'=> $request->user_id,
         ]);
 
         Alert :: success('success','data berhasil disimpan');
-        return redirect()->route('absen.index');
+        return redirect()->route('beranda.index');
     }
 
     /**
@@ -112,8 +114,14 @@ class AbsensiController extends Controller
             'nama_jabatan'=>'required',
 
             'keterangan_pegawai' => 'required',
-            'keterangan_tambahan'=>'nullable'
+            'keterangan_tambahan'=>'nullable',
+            'waktu_kehadiran'=>'nullable',
+            'status'=> 'nullable',
+
+
         ]);
+
+
 
         $absen=absen::find($id);
         $absen->update([
@@ -123,10 +131,12 @@ class AbsensiController extends Controller
             'nama_jabatan'=>$request->nama_jabatan,
 
             'keterangan_pegawai'=>$request->keterangan_pegawai,
-            'keterangan_tambahan'=>$request->keterangan_tambahan
+            'keterangan_tambahan'=>$request->keterangan_tambahan,
+            'waktu_pulang'=> $request->waktu_ulang,
+            'status_pulang'=> $request->status_pulang
         ]);
        // Alert :: success('success','data berhasil diedit');
-        return redirect()->route('absen.index');
+        return redirect()->route('beranda.index');
     }
 
     /**
@@ -137,6 +147,7 @@ class AbsensiController extends Controller
         $absens=absen::find($id);
         $absens->delete();
         Alert :: success('success','data berhasil dihapus');
-        return redirect()->route('absen.index');
+        return redirect()->route('beranda.index');
     }
+
 }

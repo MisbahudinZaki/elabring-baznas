@@ -18,26 +18,9 @@
 
                     <div class="form-group">
                         <label class="font-weight-bold">jabatan</label>
-                        <select class="form-control" name="nama_jabatan" id="nama_jabatan" value="{{old('nama_jabatan')}}" class="form-control @error('nama_jabatan')
+                        <input type="text" class="form-control @error('nama_pegawai')
                             is-invalid
-                        @enderror">
-                        <option value="">Pilih Jabatan</option>
-                            <option value="Ketua Pimpinan">Pimpinan Ketua</option>
-                            <option value="Wakil Ketua I">Wakil Ketua I</option>
-                            <option value="Wakil Ketua II">Wakil Ketua II</option>
-                            <option value="Wakil Ketua III">Wakil Ketua III</option>
-                            <option value="Wakil Ketua IV">Wakil Ketua IV</option>
-                            <option value="Ketua Pelaksana">Ketua Pelaksana</option>
-                            <option value="Kabag. Adm Sdm dan Umum">Kabag. Adm Sdm dan Umum</option>
-                            <option value="Petugas Administrasi">Petugas Administrasi</option>
-                            <option value="Petugas Umum">Petugas Umum</option>
-                            <option value="Kabag. Keuangan">Kepala Petugas Keuangan</option>
-                            <option value="Petugas Keuangan">Petugas Keuangan</option>
-                            <option value="Kabag. Pendistribusian">Kabag Pendistribusian</option>
-                            <option value="Petugas Pendistribusian">Petugas Pendistribusian</option>
-                            <option value="Kabag. Pengumpulan">Kabag. Pengumpulan</option>
-                            <option value="Costumer Service">Costumer Service</option>
-                        </select>
+                        @enderror" value="{{Auth::user()->nama_jabatan}}" name="nama_jabatan" readonly>
                     </div>
                     <div class="form-group">
                         <label class="font-weight-bold">tanggal</label>
@@ -65,8 +48,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="font-weight-bold">absen_pulangs_id</label>
-                        <input type="number" class="form-control @error('absen_pulangs_id') is-invalid  @enderror" value="{{old('absen_pulangs_id')}}" name="absen_pulangs_id" placeholder="massukan waktu">
+                        <label class="font-weight-bold">id</label>
+                        <input type="number" class="form-control @error('user_id') is-invalid  @enderror" value="{{Auth::user()->id}}" name="user_id" readonly>
                     </div>
 
 

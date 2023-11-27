@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<p class="text-center"><img src="gambar/Logo_baznas-removebg-preview.png" width="150px" alt="logo"></p>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
