@@ -18,13 +18,14 @@ class cetakcontroller extends Controller
     }
 
     public function cetakform(){
-        return view('cetak.cetak-pegawai-form');
+        $absensi=absen::with('absen_pulangs')->latest()->get();
+        return view('cetak.cetak-pegawai-form', compact('absensi'));
     }
 
     public function cetakpegawaipertanggal($tglawal, $tglakhir ){
        // dd(["Tanggal Awal".$tglawal, "Tanggal Akhir :".$tglakhir]);
 
-       $absensi=absen::whereBetween('tanggal_pegawai',[$tglawal, $tglakhir])->get();
+       $absensi=absen::with('absen_pulangs')->whereBetween('tanggal_pegawai',[$tglawal, $tglakhir])->latest()->get();
        return view('cetak.cetakpegawaipertanggal', compact('absensi'));
     }
 }

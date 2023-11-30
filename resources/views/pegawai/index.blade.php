@@ -8,16 +8,15 @@
                     <div class="card-header">Daftar User</div>
                     <div class="card-body">
                         <table class="table table-striped">
-
+                            <a href="{{route('auth.register')}}">TAMBAH USER</a>
                             <thead class="table-dark">
                                 <tr>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Role</th>
                                 <th scope="col">Status User</th>
-
-                                <th scope="col">Edit</th>
-                                <th scope="col">Hapus</th>
+                                <th scope="col"></th>
+                                <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -27,18 +26,13 @@
                                         <td>{{$user->email}}</td>
                                         <td>{{$user->status}}</td>
                                         <td>{{$user->user_status}}</td>
-                                        <td><a href="{{route('pengguna.edit', $user->id)}}" class="btn btn-primary">Edit Status pengguna</a></td>
-                                        <td>@if(auth()->user() && auth()->user()->status === 'admin')
-                                            <!-- Tampilkan tombol hanya untuk admin -->
+                                        <td><a href="{{route('user.edit', $user->id)}}" class="btn btn-md btn-primary">edit</a></td>
+                                        <td>
                                             <form onclick="return confirm('apakah anda yakin')" action="{{route('user.destroy', $user->id)}}" method="post" enctype="multipart/form-data">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">hapus</button>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">hapus</button>
                                         </form>
-                                        @else
-                                            <!-- Tampilkan pesan atau tindakan alternatif untuk non-admin -->
-                                            <p>Anda tidak memiliki izin untuk melakukan ini.</p>
-                                        @endif
                                     </td>
                                 </tr>
                                     @endforeach
@@ -47,6 +41,7 @@
 
 
                         </table>
+
 
 
                     </div>

@@ -18,15 +18,21 @@ class absen extends Model
         'nama_jabatan',
         'waktu_kehadiran',
         'status',
-        'keterangan_pegawai',
+        'keterangan_id',
         'keterangan_tambahan',
         'waktu_pulang',
         'status_pulang',
         'user_id',
+        'absen_pulangs_id',
     ];
 
     public function users(){
         return $this->belongsTo(User::class);
+    }
+
+    public function keterangan()
+    {
+        return $this->belongsTo(Keterangan::class);
     }
 
 

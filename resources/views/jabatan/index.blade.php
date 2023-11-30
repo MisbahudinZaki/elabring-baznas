@@ -1,5 +1,6 @@
-@extends('master')
-@section('isi')
+@extends('layouts.app')
+@extends('sidebar')
+@section('content')
     <h1>DAFTAR JABATAN PEGAWAI BAZNAS</h1>
 
     <div class="container">
@@ -7,6 +8,7 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
+                        <a href="{{route('jabatan.create')}}" class="btn btn-success">TAMBAH</a>
                         <table class="table table-bordered">
                             <thead class="table-dark">
                                 <tr>

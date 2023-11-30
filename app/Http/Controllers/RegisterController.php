@@ -22,6 +22,7 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'status' => $request->status,
+            'user_status'=> $request->user_status,
             'active' => 1
         ]);
 

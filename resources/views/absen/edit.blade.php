@@ -32,7 +32,6 @@
 
                     <div class="form-group">
                         <label class="font-weight-bold">keterangan</label>
-
                         <input type="text" name="keterangan_pegawai" class="form-control @error('keterangan_pegawai') is-invalid @enderror" value="{{old('keterangan_pegawai',$absen->keterangan_pegawai)}}">
                     </div>
 

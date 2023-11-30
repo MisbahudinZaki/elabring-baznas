@@ -29,11 +29,11 @@
 
                     <div class="form-group">
                         <label class="font-weight-bold">keterangan</label>
-                        <select name="keterangan_pegawai" class="form-control @error('keterangan_pegawai') is-invalid @enderror" value="{{old('keterangan_pegawai')}}">
-                                    <option value="">--------</option>
-                                    <option value="Hadir">Hadir</option>
-                                    <option value="Izin">Izin</option>
-                                    <option value="Sakit">Sakit</option>
+                        <select class="form-control select2" style="width: 100%" name="keterangan_id" id="keterangan_id">
+                        <option disabled value>Pilih Keterangan</option>
+                        @foreach ($ket as $item)
+                            <option value="{{ $item->id }}">{{ $item->keterangan }}</option>
+                        @endforeach
                         </select>
                     </div>
 

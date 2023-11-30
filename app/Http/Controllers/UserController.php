@@ -11,8 +11,35 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users=User::latest()->paginate(10);
-        return view('user.index', compact('users'));
+        $users = User::all();
+       return view('user.index', compact('users'));
+    }
+
+    public function create(){
+        return view('user.create');
+    }
+
+    public function store(Request $request){
+        $this->validate($request, [
+            'user_id'=> 'required',
+            'name'=> 'required',
+            'email'=> 'required',
+            'password'=> 'required',
+            'status'=>'required',
+            'user_status'=>'required',
+        ]);
+
+        User::create([
+            'user_id'=> $request->user_id,
+            'name'=> $request->name,
+            'email'=> $request->email,
+            'password'=> Hash::make($request->password),
+            'status'=> $request->status,
+            'user_status'=> $request->user_status,
+
+        ]);
+
+        return redirect()->route('user.index')->with('success','data disimpan');
     }
 
     public function destroy($id)
@@ -20,7 +47,7 @@ class UserController extends Controller
         $users=User::find($id);
         $users->delete();
 
-        return redirect()->route('pengguna.index');
+        return redirect()->route('user.index');
     }
 
     public function edit(User $user){
@@ -36,7 +63,7 @@ class UserController extends Controller
         'nama_jabatan' => 'nullable',
         'alamat_tingal'=> 'nullable',
         'no_hp'=> 'nullable',
-        'status' =>'nullable',
+
     ]);
 
     $user=User::find($id);
@@ -48,11 +75,13 @@ class UserController extends Controller
         'alamat_tinggal'=>$request->alamat_tinggal,
         'jenis_kelamin'=> $request->jenis_kelamin,
         'no_hp'=> $request->no_hp,
-        'status'=> $request->status,
+
     ]);
 
     return redirect()->route('home');
    }
+
+
 
     public function showchangepasswordform()
     {

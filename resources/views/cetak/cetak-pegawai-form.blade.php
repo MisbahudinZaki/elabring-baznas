@@ -20,6 +20,45 @@
                     '/' + document.getElementById('tglakhir').value "
                     target="_blank" class="btn btn-primary"><i class="fas fa-print"></i>cetak</a>
                 </div>
+
+
+
+            </div>
+            <br>
+            <div class="card">
+                <div class="card-header">rekap</div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">NAMA</th>
+                                <th scope="col">JABATAN</th>
+                                <th scope="col">TANGGAL</th>
+                                <th scope="col">KETERANGAN</th>
+                                <th scope="col">WAKTU KEHADIRAN</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">waktu_pulang</th>
+                                <th scope="col">status pulang</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                                @foreach ($absensi as $abs)
+                                <tr>
+                                <td>{{$abs->nama_pegawai}}</td>
+                                <td>{{$abs->nama_jabatan}}</td>
+                                <td>{{$abs->tanggal_pegawai}}</td>
+                                <td>{{$abs->keterangan_pegawai}}</td>
+                                <td>{{$abs->waktu_kehadiran}}</td>
+                                <td>{{$abs->status}}</td>
+                                <td>{{$abs->absen_pulangs->waktu_pulang}}</td>
+                                <td>{{$abs->absen_pulangs->status_pulang}}</td>
+                            </tr>
+                                @endforeach
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 

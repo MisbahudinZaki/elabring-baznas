@@ -29,6 +29,8 @@ class User extends Authenticatable
         'alamat_tinggal',
         'no_hp',
         'status',
+        'user_status',
+        'user_id',
     ];
 
     /**
@@ -62,6 +64,11 @@ class User extends Authenticatable
 public function absens()
 {
     return $this->hasMany(absen::class);
+}
+
+public function jabatan()
+{
+    return $this->hasMany(jabatan::class);
 }
 
 }

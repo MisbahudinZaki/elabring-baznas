@@ -21,7 +21,7 @@ class JabatanController extends Controller
      */
     public function create()
     {
-        //
+        return view('jabatan.create');
     }
 
     /**
@@ -29,7 +29,15 @@ class JabatanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nama_jabatan'=> 'required',
+        ]);
+
+        jabatan::create([
+            'nama_jabatan'=> $request->nama_jabatan,
+        ]);
+
+        return redirect()->route('jabatan.index')->with('success','data disimpan');
     }
 
     /**

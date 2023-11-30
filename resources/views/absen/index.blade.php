@@ -20,8 +20,6 @@
 
                         <thead class="table-dark">
                             <tr>
-                                <th scope="col">#</th>
-
                                 <th scope="col">NAMA</th>
                                 <th scope="col">JABATAN</th>
                                 <th scope="col">TANGGAL</th>
@@ -36,11 +34,10 @@
                         <tbody>
                             @forelse ($absensi as $absen)
                                 <tr>
-                                    <td>{{$absen->id}}</td>
                                     <td>{{$absen->nama_pegawai}}</td>
                                     <td>{{$absen->nama_jabatan}}</td>
                                     <td>{{$absen->tanggal_pegawai}}</td>
-                                    <td>{{$absen->keterangan_pegawai}}</td>
+                                    <td>{{$absen->keterangan_id}}</td>
                                     <td>{{$absen->waktu_kehadiran}}</td>
                                     <td>{{$absen->status}}</td>
                                     <td>{{$absen->users->id}}</td>

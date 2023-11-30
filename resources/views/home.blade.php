@@ -4,13 +4,14 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <a href="{{route('cetak-pegawai-form')}}" class="btn btn-primary"><i class="fas fa-regular fa-print"></i>cetak</a>
 
             <div class="card">
                 <div class="card-header">Selamat datang <b>{{Auth::user()->name}}</b>, Anda login sebagai: <b>{{Auth::user()->status}}</b></div>
                 <div class="card-body">
                     <table class="table table-striped">
                         <tbody>
+                           <tbody>
+                            @foreach($users as $user)
                             <tr>
                                 <td scope="row" width="200">Nama</td>
                                 <td width="20">:</td>
@@ -53,12 +54,14 @@
                                 <td>{{Auth::user()->no_hp}}</td>
                             </tr>
 
+                            <tr>
+                                <td></td>
+                                <td>:</td>
+                                <td><a href="{{route('user.edit', $user->id)}}" class="btn btn-primary">EDIT</a></td>
+                            </tr>
 
+                        @endforeach
                         </tbody>
-
-
-
-
                     </table>
                 </div>
             </div>

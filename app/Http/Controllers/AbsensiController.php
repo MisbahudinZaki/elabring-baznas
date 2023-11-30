@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\absen;
 use App\Models\absenpulang;
 use App\Models\jabatan;
+use App\Models\Keterangan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -29,8 +30,8 @@ class AbsensiController extends Controller
      */
     public function create()
     {
-
-        return view('absen.create');
+        $ket=Keterangan::all();
+        return view('absen.create', compact('ket'));
     }
 
     /**
@@ -43,7 +44,7 @@ class AbsensiController extends Controller
             'tanggal_pegawai'=>'required',
             'nama_jabatan' => 'required',
             'waktu_kehadiran'=> 'required',
-            'keterangan_pegawai' => 'required',
+            'keterangan_id' => 'required',
             'keterangan_tambahan'=>'nullable',
             'status'=> 'nullable',
             'user_id'=> 'required',
@@ -70,7 +71,7 @@ class AbsensiController extends Controller
             'nama_pegawai'=> $request->nama_pegawai,
             'tanggal_pegawai'=> $request->tanggal_pegawai,
             'nama_jabatan'=>$request->nama_jabatan,
-            'keterangan_pegawai'=>$request->keterangan_pegawai,
+            'keterangan_id'=>$request->keterangan_id,
             'keterangan_tambahan'=>$request->keterangan_tambahan,
             'waktu_kehadiran' => $entryTime,
             'status' => $status,

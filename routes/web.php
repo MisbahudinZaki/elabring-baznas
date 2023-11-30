@@ -3,10 +3,13 @@
 use App\Http\Controllers\absenberandacontroller;
 use App\Http\Controllers\absenpulangController;
 use App\Http\Controllers\AbsensiController;
+use App\Http\Controllers\AddUserController;
 use App\Http\Controllers\cetakcontroller;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\EditUserController;
 use App\Http\Controllers\homecontroller;
 use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\keterangancontroller;
 use App\Http\Controllers\logincontroller;
 use App\Http\Controllers\officeprofileController;
 use App\Http\Controllers\PegawaiController;
@@ -36,23 +39,26 @@ Route::get('/', function () {
 //Route::post('logout', [logincontroller::class, 'actionlogout'])->name('logout')->middleware('auth');
 //Route::get('register', [RegisterController::class, 'register'])->name('register');
 //Route::post('register/action', [RegisterController::class, 'actionregister'])->name('actionregister');
-Route::get('/home', [homecontroller::class, 'index'])->name('home');
+Route::get('/home', [homecontroller::class, 'index'])->name('home')->middleware('auth');
 Route::get('/gantiPassword',[UserController::class,'showchangepasswordform'])->middleware('auth');
 Route::post('/gantiPassword',[UserController::class,'changepassword'])->name('changepassword')->middleware('auth');
-Route::resource('user', UserController::class);
+Route::resource('user', UserController::class)->middleware('auth');
+Route::resource('keterangan', keterangancontroller::class)->middleware('auth');
 
 
-    Route::resource('absen', AbsensiController::class);
-    Route::get('/absen_pulang', [AbsensiController::class, 'absen_pulang'])->name('absen_pulang');
+
+
+    Route::resource('absen', AbsensiController::class)->middleware('auth');
+    Route::get('/absen_pulang', [AbsensiController::class, 'absen_pulang'])->name('absen_pulang')->middleware('auth');
     Route::resource('absenpulang', absenpulangController::class);
-    Route::get('/jabatan', [JabatanController::class, 'index'])->name('jabatan');
+    Route::resource('jabatan', JabatanController::class);
 
 Route::get('/about', [officeprofileController::class, 'index'])->name('about');
 
 Route::get('/chat', [ChatController::class, 'index']);
 Route::post('/chat/send', [ChatController::class, 'sendMessage']);
 
-Route::resource('pegawai', PegawaiController::class);
+Route::resource('pengguna', EditUserController::class)->middleware('admin');
 
 
     Route::get('/cetak', [cetakcontroller::class, 'cetak'])->name('cetak')->middleware('admin');
@@ -65,6 +71,8 @@ Route::get('/waktu-sekarang', function () {
         $waktuSekarang = Carbon::now();
         return view('waktu-sekarang', ['waktuSekarang' => $waktuSekarang]);
     });
+
+Route::get('/hitung', [HitungController::class, 'tampilkanOpsi'])->name('hitung');
 
 Auth::routes();
 

@@ -8,6 +8,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
+                        <a href="{{route('cetak-pegawai-form')}}" class="btn btn-primary"><i class="fas fa-regular fa-print"></i>cetak</a>
                         <a href="{{route('absen.create')}}" class="btn btn-success">Absen Datang</a><br>
 
 
@@ -23,28 +24,25 @@
 
                              <thead class="table-dark">
                                  <tr>
-                                     <th scope="col">#</th>
-
                                      <th scope="col">NAMA</th>
                                      <th scope="col">JABATAN</th>
                                      <th scope="col">TANGGAL</th>
                                      <th scope="col">KETERANGAN</th>
                                      <th scope="col">WAKTU KEHADIRAN</th>
-                                     <th scope="col">Status</th>
-                                     <th scope="col">waktu_pulang</th>
-                                     <th scope="col">status pulang</th>
-                                     <th scope="col">Aksi</th>
-                                     <th scope="col">Absen Pulang</th>
+                                     <th scope="col">STATUS</th>
+                                     <th scope="col">WAKTU PULANG</th>
+                                     <th scope="col">STATUS PULANG</th>
+                                     <th scope="col">AKSI</th>
+                                     <th scope="col">ABSEN PULANG</th>
                                  </tr>
                              </thead>
                              <tbody>
                                  @forelse ($absensi as $absen)
                                      <tr>
-                                         <td>{{$absen->id}}</td>
                                          <td>{{$absen->nama_pegawai}}</td>
                                          <td>{{$absen->nama_jabatan}}</td>
                                          <td>{{$absen->tanggal_pegawai}}</td>
-                                         <td>{{$absen->keterangan_pegawai}}</td>
+                                         <td>{{$absen->keterangan->keterangan}}</td>
                                          <td>{{$absen->waktu_kehadiran}}</td>
                                          <td>{{$absen->status}}</td>
                                          <td>{{$absen->absen_pulangs->waktu_pulang}}</td>

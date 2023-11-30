@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -11,15 +10,19 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
+
+
                         <div class="row mb-3">
-                            <label for="user_id" class="col-md-4 col-form-label text-md-end">User Id</label>
+                            <label for="user_id" class="col-md-4 col-form-label text-md-end">{{ __('User Id') }}</label>
+
                             <div class="col-md-6">
-                            <input type="number" name="user_id" class="form-control @error('user_id') is-invalid @enderror" value="{{old('user_id')}}" id="user_id" required autocomplete="user_id" autofocus>
-                            @error('user_id')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                                <input id="user_id" type="number" class="form-control @error('user_id') is-invalid @enderror" name="user_id" value="{{ old('user_id') }}" required autocomplete="user_id" autofocus>
+
+                                @error('user_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 

@@ -68,11 +68,6 @@
                                 <input type="number" class="form-control @error('no_hp') is-invalid @enderror" value="{{old('no_hp', $user->no_hp)}}" name="no_hp">
                             </div>
 
-                            <div class="form-group">
-                                <label class="font-weight-bold">Status</label>
-                                <input type="text" class="form-control @error('status') is-invalid @enderror" value="{{old('status', $user->status)}}" name="status">
-                            </div>
-
                             <button type="submit" class="btn btn-md btn-primary"><i class="fas fa-check-square"></i> save</button>
                             <button type="reset" class="btn btn-md btn-warning"><i class="fas fa-undo"></i> reset</button>
                             <a href="{{route('home')}}" class="btn btn-danger">cancel</a>
