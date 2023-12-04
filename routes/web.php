@@ -31,11 +31,11 @@ use Carbon\Carbon;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('login');
 });
 
 //Route::get('/', [logincontroller::class, 'login'])->name('login');
-//Route::post('actionlogin', [logincontroller::class, 'actionlogin'])->name('actionlogin');
+Route::post('actionlogin', [logincontroller::class, 'actionlogin'])->name('actionlogin');
 //Route::post('logout', [logincontroller::class, 'actionlogout'])->name('logout')->middleware('auth');
 //Route::get('register', [RegisterController::class, 'register'])->name('register');
 //Route::post('register/action', [RegisterController::class, 'actionregister'])->name('actionregister');
@@ -71,8 +71,9 @@ Route::get('/waktu-sekarang', function () {
         $waktuSekarang = Carbon::now();
         return view('waktu-sekarang', ['waktuSekarang' => $waktuSekarang]);
     });
-
-Route::get('/hitung', [HitungController::class, 'tampilkanOpsi'])->name('hitung');
+//-->hitung
+Route::get('/hitung', [HitungController::class,'index'])->name('hitung');
+Route::get('/opsi', [HitungController::class,'terlambat'])->name('opsi');
 
 Auth::routes();
 

@@ -33,31 +33,6 @@
                                     <option value="Perempuan">Perempuan</option>
                         </select>
 
-                        <div class="form-group">
-                            <label class="font-weight-bold">jabatan</label>
-                            <select class="form-control" name="nama_jabatan" id="nama_jabatan" value="{{old('nama_jabatan')}}" class="form-control @error('nama_jabatan')
-                                is-invalid
-                            @enderror">
-                            <option value="">Pilih Jabatan</option>
-                                <option value="Ketua Pimpinan">Pimpinan Ketua</option>
-                                <option value="Wakil Ketua I">Wakil Ketua I</option>
-                                <option value="Wakil Ketua II">Wakil Ketua II</option>
-                                <option value="Wakil Ketua III">Wakil Ketua III</option>
-                                <option value="Wakil Ketua IV">Wakil Ketua IV</option>
-                                <option value="Ketua Pelaksana">Ketua Pelaksana</option>
-                                <option value="Kabag. Adm Sdm dan Umum">Kabag. Adm Sdm dan Umum</option>
-                                <option value="Petugas Administrasi">Petugas Administrasi</option>
-                                <option value="Petugas Umum">Petugas Umum</option>
-                                <option value="Kabag. Keuangan">Kepala Petugas Keuangan</option>
-                                <option value="Petugas Keuangan">Petugas Keuangan</option>
-                                <option value="Kabag. Pendistribusian">Kabag Pendistribusian</option>
-                                <option value="Petugas Pendistribusian">Petugas Pendistribusian</option>
-                                <option value="Kabag. Pengumpulan">Kabag. Pengumpulan</option>
-                                <option value="Costumer Service">Costumer Service</option>
-                            </select>
-                        </div>
-                            </div>
-
                             <div class="form-group">
                                 <label class="font-weight-bold">alamat tinggal</label>
                                 <input type="text" class="form-control @error('alamat_tinggal') is-invalid @enderror" value="{{old('alamat_tinggal', $user->alamat_tinggal)}}" name="alamat_tinggal">

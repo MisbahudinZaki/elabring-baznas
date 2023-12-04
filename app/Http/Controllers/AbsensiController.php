@@ -21,7 +21,7 @@ class AbsensiController extends Controller
      */
     public function index()
     {
-        $absensi=absen::with('absen_pulangs','users')->paginate(10);
+        $absensi=absen::with('absen_pulangs','user')->paginate(10);
         return view('absen.index', compact('absensi'));
     }
 
@@ -42,8 +42,8 @@ class AbsensiController extends Controller
         $this->validate($request,[
             'nama_pegawai' =>'required',
             'tanggal_pegawai'=>'required',
-            'nama_jabatan' => 'required',
-            'waktu_kehadiran'=> 'required',
+
+            'waktu_kehadiran'=> 'nullable',
             'keterangan_id' => 'required',
             'keterangan_tambahan'=>'nullable',
             'status'=> 'nullable',
@@ -70,7 +70,6 @@ class AbsensiController extends Controller
         absen::create([
             'nama_pegawai'=> $request->nama_pegawai,
             'tanggal_pegawai'=> $request->tanggal_pegawai,
-            'nama_jabatan'=>$request->nama_jabatan,
             'keterangan_id'=>$request->keterangan_id,
             'keterangan_tambahan'=>$request->keterangan_tambahan,
             'waktu_kehadiran' => $entryTime,
@@ -112,7 +111,6 @@ class AbsensiController extends Controller
         $this->validate($request,[
             'nama_pegawai' =>'required',
             'tanggal_pegawai'=>'required',
-            'nama_jabatan'=>'required',
 
             'keterangan_pegawai' => 'required',
             'keterangan_tambahan'=>'nullable',
@@ -129,7 +127,6 @@ class AbsensiController extends Controller
 
             'nama_pegawai'=>$request->nama_pegawai,
             'tanggal_pegawai'=>$request->tanggal_pegawai,
-            'nama_jabatan'=>$request->nama_jabatan,
 
             'keterangan_pegawai'=>$request->keterangan_pegawai,
             'keterangan_tambahan'=>$request->keterangan_tambahan,

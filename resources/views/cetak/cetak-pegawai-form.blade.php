@@ -48,7 +48,7 @@
                                 <td>{{$abs->nama_pegawai}}</td>
                                 <td>{{$abs->nama_jabatan}}</td>
                                 <td>{{$abs->tanggal_pegawai}}</td>
-                                <td>{{$abs->keterangan_pegawai}}</td>
+                                <td>{{$abs->keterangan->keterangan}}</td>
                                 <td>{{$abs->waktu_kehadiran}}</td>
                                 <td>{{$abs->status}}</td>
                                 <td>{{$abs->absen_pulangs->waktu_pulang}}</td>

@@ -24,11 +24,11 @@ class LoginController extends Controller
             'password' => $request->input('password'),
         ];
 
-        if (Auth::Attempt($data) && Auth::check() && Auth::user()->status == 'admin') {
+        if (Auth::Attempt($data) && Auth::check() && Auth::user()->user_status == 'aktif') {
             return redirect()->route('home');
         }
-        elseif(Auth::attempt($data) && Auth::check() && Auth::user()->status == 'pegawai'){
-            return redirect()->route('absen.index');
+        elseif(Auth::attempt($data) && Auth::check() && Auth::user()->user_status == 'tidak aktif'){
+            return redirect()->route('login')->with('message','maaf, status anda tidak aktif');
         }
         else{
             Session::flash('error', 'Email atau Password Salah');

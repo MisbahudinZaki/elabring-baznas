@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_pegawai');
             $table->date('tanggal_pegawai');
-            $table->string('nama_jabatan');
-            $table->string('keterangan_pegawai');
+            $table->string('keterangan_id');
             $table->timestamps();
         });
     }

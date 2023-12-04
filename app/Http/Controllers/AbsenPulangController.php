@@ -20,7 +20,9 @@ class AbsenpulangController extends Controller
     public function store(Request $request){
         $this->validate($request,[
             'waktu_pulang'=> 'nullable',
+
             'status_pulang'=> 'nullable',
+            'user_id'=>'nullable'
             ]);
 
             $entryTime = $request->input('waktu_pulang');
@@ -41,6 +43,7 @@ class AbsenpulangController extends Controller
         absenpulang::create([
             'waktu_pulang'=> $entryTime,
             'status_pulang'=> $status_pulang,
+            'user_id'->$request->user_id
         ]);
     }
 
@@ -57,6 +60,7 @@ class AbsenpulangController extends Controller
         $this->validate($request,[
             'waktu_pulang'=> 'nullable',
             'status_pulang'=> 'nullable',
+            'user_id'=>'nullable'
         ]);
 
         $entryTime = $request->input('waktu_pulang');
@@ -78,6 +82,7 @@ class AbsenpulangController extends Controller
         $absenpulang->update([
             'waktu_pulang'=> $entryTime,
             'status_pulang'=> $status_pulang,
+            'user_id'=>$request->user_id
         ]);
 
         return redirect()->route('beranda.index');

@@ -16,6 +16,7 @@ class absenpulang extends Model
         "id",
         'waktu_pulang',
         'status_pulang',
+        'user_id',
     ];
 
     public function absen(){

@@ -24,6 +24,7 @@
 
                              <thead class="table-dark">
                                  <tr>
+                                    <th scope="col">Id</th>
                                      <th scope="col">NAMA</th>
                                      <th scope="col">JABATAN</th>
                                      <th scope="col">TANGGAL</th>
@@ -39,6 +40,7 @@
                              <tbody>
                                  @forelse ($absensi as $absen)
                                      <tr>
+                                        <td>{{$absen->user->id}}</td>
                                          <td>{{$absen->nama_pegawai}}</td>
                                          <td>{{$absen->nama_jabatan}}</td>
                                          <td>{{$absen->tanggal_pegawai}}</td>

@@ -15,43 +15,37 @@
                             <tr>
                                 <td scope="row" width="200">Nama</td>
                                 <td width="20">:</td>
-                                <td>{{Auth::user()->name}}</td>
+                                <td>{{$user->name}}</td>
                             </tr>
                             <tr>
                                 <td>Jenis Kelamin</td>
                                 <td>:</td>
-                                <td>{{Auth::user()->jenis_kelamin}}</td>
+                                <td>{{$user->jenis_kelamin}}</td>
                             </tr>
 
                             <tr>
                                 <td>Tempat/Tanggal lahir</td>
                                 <td>:</td>
-                                <td>{{Auth::user()->tempat_lahir}} / {{Auth::user()->tanggal_lahir}}</td>
-                            </tr>
-
-                            <tr>
-                                <td>Jabatan</td>
-                                <td>:</td>
-                                <td>{{Auth::user()->nama_jabatan}}</td>
+                                <td>{{$user->tempat_lahir}} / {{$user->tanggal_lahir}}</td>
                             </tr>
 
                             <tr>
                                 <td>Alamat</td>
                                 <td>:</td>
-                                <td>{{Auth::user()->alamat_tinggal}}</td>
+                                <td>{{$user->alamat_tinggal}}</td>
                             </tr>
 
                             <tr>
                                 <td>Email</td>
                                 <td>:</td>
-                                <td>{{Auth::user()->email}}</td>
+                                <td>{{$user->email}}</td>
                             </tr>
 
 
                             <tr>
                                 <td>No Hp</td>
                                 <td>:</td>
-                                <td>{{Auth::user()->no_hp}}</td>
+                                <td>{{$user->no_hp}}</td>
                             </tr>
 
                             <tr>

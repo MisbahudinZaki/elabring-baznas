@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\jabatan;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +22,7 @@ class UserController extends Controller
 
     public function store(Request $request){
         $this->validate($request, [
-            'user_id'=> 'required',
+            'user_id'=> 'nullable',
             'name'=> 'required',
             'email'=> 'required',
             'password'=> 'required',
@@ -29,8 +30,10 @@ class UserController extends Controller
             'user_status'=>'required',
         ]);
 
+        $data['user_id'] = $this->generateUserId();
+
         User::create([
-            'user_id'=> $request->user_id,
+            'user_id'=>$data,
             'name'=> $request->name,
             'email'=> $request->email,
             'password'=> Hash::make($request->password),
@@ -40,6 +43,10 @@ class UserController extends Controller
         ]);
 
         return redirect()->route('user.index')->with('success','data disimpan');
+    }
+
+    private function generateUserId(){
+        return User::count() + 1;
     }
 
     public function destroy($id)
@@ -60,7 +67,6 @@ class UserController extends Controller
         'tempat_lahir'=> 'nullable',
         'tanggal_lahir' => 'nullable',
         'jenis_kelamin'=> 'nullable',
-        'nama_jabatan' => 'nullable',
         'alamat_tingal'=> 'nullable',
         'no_hp'=> 'nullable',
 
@@ -71,7 +77,6 @@ class UserController extends Controller
         'name'=> $request->name,
         'tempat_lahir'=> $request->tempat_lahir,
         'tanggal_lahir'=> $request->tanggal_lahir,
-        'nama_jabatan'=> $request->nama_jabatan,
         'alamat_tinggal'=>$request->alamat_tinggal,
         'jenis_kelamin'=> $request->jenis_kelamin,
         'no_hp'=> $request->no_hp,

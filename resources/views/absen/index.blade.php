@@ -40,8 +40,8 @@
                                     <td>{{$absen->keterangan_id}}</td>
                                     <td>{{$absen->waktu_kehadiran}}</td>
                                     <td>{{$absen->status}}</td>
-                                    <td>{{$absen->users->id}}</td>
-                                    <td>{{$absen->waktu_pulang}}</td>
+                                    <td>{{$absen->user->id}}</td>
+                                    <td>{{$absen->absen_pulangs->waktu_pulang}}</td>
                                   <td>
                                     <form onsubmit="return confirm('Apakah anda yakin')" action="{{route('absen.destroy', $absen->id)}}" method="POST" enctype="multipart/form-data">
                                     @csrf

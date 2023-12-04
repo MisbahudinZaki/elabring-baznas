@@ -36,7 +36,7 @@
                     <tr>
                         <td>{{$ab->nama_pegawai}}</td>
                         <td>{{$ab->nama_jabatan}}</td>
-                        <td>{{$ab->keterangan_pegawai}}</td>
+                        <td>{{$ab->keterangan->keterangan}}</td>
                         <td>{{$ab->waktu_kehadiran}}</td>
                         <td>{{$ab->absen_pulangs->waktu_pulang}}</td>
                     </tr>

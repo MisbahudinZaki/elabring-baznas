@@ -22,7 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'nama_jabatan',
+        'jabatan_id',
         'tempat_lahir',
         'tanggal_lahir',
         'jenis_kelamin',
@@ -66,9 +66,9 @@ public function absens()
     return $this->hasMany(absen::class);
 }
 
-public function jabatan()
+public function absen_pulangs()
 {
-    return $this->hasMany(jabatan::class);
+    return $this->hasMany(absenpulang::class);
 }
 
 }

@@ -26,7 +26,7 @@ class absen extends Model
         'absen_pulangs_id',
     ];
 
-    public function users(){
+    public function user(){
         return $this->belongsTo(User::class);
     }
 
@@ -61,6 +61,13 @@ class absen extends Model
             $model->absen_pulangs_id = $lastNumber + 1;
 
         });
+    }
+
+    public function countLateByUserId(){
+        return $this->where('status','terlambat')
+                    ->groupBy('user_id')
+                    ->select('user_id', \DB::raw('count(*) as count'))
+                    ->get();
     }
 
 }
