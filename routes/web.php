@@ -14,6 +14,7 @@ use App\Http\Controllers\logincontroller;
 use App\Http\Controllers\officeprofileController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\HitungController;
+use App\Http\Controllers\PulangController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -49,8 +50,11 @@ Route::resource('keterangan', keterangancontroller::class)->middleware('auth');
 
 
     Route::resource('absen', AbsensiController::class)->middleware('auth');
-    Route::get('/absen_pulang', [AbsensiController::class, 'absen_pulang'])->name('absen_pulang')->middleware('auth');
-    Route::resource('absenpulang', absenpulangController::class);
+    //Route::get('/absen_pulang', [AbsensiController::class, 'absen_pulang'])->name('absen_pulang')->middleware('auth');
+
+    Route::resource('absenpulang', PulangController::class);
+
+    //Route::resource('absenpulang', absenpulangController::class);
     Route::resource('jabatan', JabatanController::class);
 
 Route::get('/about', [officeprofileController::class, 'index'])->name('about');

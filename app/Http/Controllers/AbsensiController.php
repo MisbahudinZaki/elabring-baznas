@@ -21,7 +21,7 @@ class AbsensiController extends Controller
      */
     public function index()
     {
-        $absensi=absen::with('absen_pulangs','user')->paginate(10);
+        $absensi=absen::with('user')->paginate(10);
         return view('absen.index', compact('absensi'));
     }
 

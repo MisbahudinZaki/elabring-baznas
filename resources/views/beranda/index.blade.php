@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="{{route('cetak-pegawai-form')}}" class="btn btn-primary"><i class="fas fa-regular fa-print"></i>cetak</a>
-                        <a href="{{route('absen.create')}}" class="btn btn-success">Absen Datang</a><br>
+                        <a href="{{route('absen.create')}}" class="btn btn-success"><i class="fas fa-solid fa-plus-square"></i> Datang</a><br>
 
 
                     </div>
@@ -47,8 +47,8 @@
                                          <td>{{$absen->keterangan->keterangan}}</td>
                                          <td>{{$absen->waktu_kehadiran}}</td>
                                          <td>{{$absen->status}}</td>
-                                         <td>{{$absen->absenpulang->waktu_pulang}}</td>
-                                         <td>{{$absen->absenpulang->status_pulang}}</td>
+                                         <td>{{$absen->waktu_pulang}}</td>
+                                         <td>{{$absen->status_pulang}}</td>
                                        <td>
                                          <form onsubmit="return confirm('Apakah anda yakin')" action="{{route('absen.destroy', $absen->id)}}" method="POST" enctype="multipart/form-data">
                                          @csrf

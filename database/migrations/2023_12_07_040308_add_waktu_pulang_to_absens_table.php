@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('absens', function (Blueprint $table) {
-            //
+            $table->time('waktu_pulang')->nullable()->after('status');
+            $table->string('status_pulang')->nullable()->after('waktu_pulang');
         });
     }
 

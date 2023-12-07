@@ -23,8 +23,7 @@ class absen extends Model
         'waktu_pulang',
         'status_pulang',
         'user_id',
-        'absenpulang_id',
-    ];
+        ];
 
     public function user(){
         return $this->belongsTo(User::class);
@@ -40,7 +39,7 @@ class absen extends Model
         return $this->belongsTo(absenpulang::class);
     }
 
-    protected static function boot()
+    /*protected static function boot()
     {
         parent::boot();
 
@@ -59,7 +58,7 @@ class absen extends Model
             $model->absenpulang_id = $lastNumber + 1;
 
         });
-    }
+    }*/
 
     public function countLateByUserId(){
         return $this->where('status','terlambat')
