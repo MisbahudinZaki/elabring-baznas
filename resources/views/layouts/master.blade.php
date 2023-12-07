@@ -23,7 +23,6 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <button style="width: 5%" class="btn btn-mb btn-dark" id="toggle-sidebar"><i class="fas fa-sliders-h"></i></button>
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                    BAZNAS
@@ -77,41 +76,12 @@
             </div>
         </nav>
 
-
-
         <div id="content">
         <main class="py-4">
-
-        <div id="sidebar">
-            <button class="btn btn-mb btn-light" id="hide-sidebar"><i class="fas fa-sliders-h"></i></button>
-            <hr>
-            <p><img src="gambar/Logo baznas.jpg" alt="logo" width="70">
-                BAZNAS KAB. PASAMAN
-                </p>
-                <hr>
-                <div class="text-center">
-                    <p><a style="width: 100%;" class="btn btn-primary" href="{{route('home')}}"><i class="fas fa-tachometer-alt"></i> dashboard</a></p>
-                    <p><a style="width: 100%;" class="btn btn-light" href="{{route('beranda.index')}}"><i class="fas fa-border-all"></i> absensi datang</a></p>
-                    <p></p>
-
-            </div>
-
-            <div class="container">
-                <p><a style="color:aliceblue; text-decoration:none; font-size:20px" href="{{route('changepassword')}}"><i class="fas fa-edit"></i> Ganti Password</a></p>
-                <p><a style="color:aliceblue; text-decoration:none; font-size:20px" href="{{route('user.index')}}"><i class="fas fa-users"></i> Users</a></p>
-                <p><a style="color:aliceblue; text-decoration:none; font-size:20px" href="{{route('about')}}"><i class="far fa-building"></i> About</a></p>
-
-            </div>
-
-        </div>
-
             @include('sweetalert::alert')
-
             @yield('content')
         </main>
         </div>
-
-
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

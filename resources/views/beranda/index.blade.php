@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@extends('sidebar')
 @section('content')
 
 <body style="background: lightgray">
+
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
@@ -26,7 +26,7 @@
                                  <tr>
                                     <th scope="col">Id</th>
                                      <th scope="col">NAMA</th>
-                                     <th scope="col">JABATAN</th>
+
                                      <th scope="col">TANGGAL</th>
                                      <th scope="col">KETERANGAN</th>
                                      <th scope="col">WAKTU KEHADIRAN</th>
@@ -42,13 +42,13 @@
                                      <tr>
                                         <td>{{$absen->user->id}}</td>
                                          <td>{{$absen->nama_pegawai}}</td>
-                                         <td>{{$absen->nama_jabatan}}</td>
+
                                          <td>{{$absen->tanggal_pegawai}}</td>
                                          <td>{{$absen->keterangan->keterangan}}</td>
                                          <td>{{$absen->waktu_kehadiran}}</td>
                                          <td>{{$absen->status}}</td>
-                                         <td>{{$absen->absen_pulangs->waktu_pulang}}</td>
-                                         <td>{{$absen->absen_pulangs->status_pulang}}</td>
+                                         <td>{{$absen->absenpulang->waktu_pulang}}</td>
+                                         <td>{{$absen->absenpulang->status_pulang}}</td>
                                        <td>
                                          <form onsubmit="return confirm('Apakah anda yakin')" action="{{route('absen.destroy', $absen->id)}}" method="POST" enctype="multipart/form-data">
                                          @csrf

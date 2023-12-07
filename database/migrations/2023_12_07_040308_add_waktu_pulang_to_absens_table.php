@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('absens', function (Blueprint $table) {
-            $table->bigInteger('absenpulang_id')->after('user_id')->nullable();
+            //
         });
     }
 

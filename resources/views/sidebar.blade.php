@@ -9,27 +9,28 @@
     <link rel="stylesheet" href="css/mystyle.css">
 </head>
 <body>
-    <div id="inner">
-        <div id="sidebar" class="text-white">
-            <p><img src="gambar/Logo baznas.jpg" alt="logo" width="70">
+
+    <div id="sidebar">
+        <button id="hide-sidebar"><i class="fas fa-sliders-h"></i></button>
+        <hr>
+        <p><img src="gambar/Logo baznas.jpg" alt="logo" width="70">
             BAZNAS KAB. PASAMAN
             </p>
-            <br>
+            <hr>
             <div class="text-center">
-                    <p><a style="width: 100%;" class="btn btn-primary" href="{{route('home')}}"><i class="fas fa-tachometer-alt"></i> dashboard</a></p>
-                    <p><a style="width: 100%;" class="btn btn-light" href="{{route('beranda.index')}}"><i class="fas fa-border-all"></i> absensi datang</a></p>
-                    <p></p>
+                <p><a style="width: 100%;" class="btn btn-primary" href="{{route('home')}}"><i class="fas fa-tachometer-alt"></i> dashboard</a></p>
+                <p><a style="width: 100%;" class="btn btn-light" href="{{route('beranda.index')}}"><i class="fas fa-border-all"></i> absensi datang</a></p>
+                <p></p>
 
-            </div>
+        </div>
+        <div class="container">
+            <p><a style="color:aliceblue; text-decoration:none; font-size:20px" href="{{route('changepassword')}}"><i class="fas fa-edit"></i> Ganti Password</a></p>
+            <p><a style="color:aliceblue; text-decoration:none; font-size:20px" href="{{route('user.index')}}"><i class="fas fa-users"></i> Users</a></p>
+            <p><a style="color:aliceblue; text-decoration:none; font-size:20px" href="{{route('about')}}"><i class="far fa-building"></i> About</a></p>
 
-
-            <div class="container">
-                <p><a style="color:aliceblue; text-decoration:none; font-size:20px" href="{{route('changepassword')}}"><i class="fas fa-edit"></i> Ganti Password</a></p>
-                <p><a style="color:aliceblue; text-decoration:none; font-size:20px" href="{{route('user.index')}}"><i class="fas fa-users"></i> Users</a></p>
-                <p><a style="color:aliceblue; text-decoration:none; font-size:20px" href="{{route('about')}}"><i class="far fa-building"></i> About</a></p>
-
-            </div>
         </div>
     </div>
+
+
 </body>
 </html>

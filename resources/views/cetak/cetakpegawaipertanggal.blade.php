@@ -5,50 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Laporan</title>
-    <style>
-        table.static{
-            position: relative;
-            orientation: landscape;
-            border:2px solid black;
-        }
-    </style>
 </head>
 <body>
-    <div class="form-group">
-        <h1 align="center">Kartu Laporan Absen Pegawai</h1>
-        <h2 align="center">BAZNAS KABUPATEN PASAMAN</h2>
-        <table class="static" align="center" rules="all" border="1px" style="width: 95%;">
-            <thead>
-            <tr>
-                <th scope="col">NAMA</th>
-                <th scope="col">JABATAN</th>
-                <th scope="col">TANGGAL</th>
-                <th scope="col">KETERANGAN</th>
-                <th scope="col">WAKTU KEHADIRAN</th>
-                <th scope="col">STATUS</th>
-                <th scope="col">WAKTU PULANG</th>
-                <th scope="col">STATUS</th>
-            </tr>
-            </thead>
-            <tbody>
-                @foreach ($absensi as $ab)
-                    <tr>
-                        <td>{{$ab->nama_pegawai}}</td>
-                        <td>{{$ab->nama_jabatan}}</td>
-                        <td>{{$ab->tanggal_pegawai}}</td>
-                        <td>{{$ab->keterangan_pegawai}}</td>
-                        <td>{{$ab->waktu_kehadiran}}</td>
-                        <td>{{$ab->status}}</td>
-                        <td>{{$ab->absen_pulangs->waktu_pulang}}</td>
-                        <td>{{$ab->absen_pulangs->status_pulang}}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">Laporan</div>
+                    <div class="card-body">
+                        <div style="float: left; width: 50%;">
+                            <h4>User List</h4>
+                            @foreach($users->chunk(ceil($users->count() / 2))[0] as $user)
+                                <p>ID: {{ $user->id }}</p>
+                                <p>Name: {{ $user->name }}</p>
+                                <p>Email: {{ $user->email }}</p>
 
-        <script type="text/javascript">
-        window.print();
-        </script>
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            @foreach($telat as $lambat)
+                                            @if ($lambat->user_id == $user->user_id)
+
+                                            <td>Jumlah Terlambat :  {{$lambat->late_count}}</td>
+                                            @endif
+                                            @endforeach
+
+                                            @foreach ($sakit as $sak)
+                                            @if ($sak->user_id == $user->user_id)
+                                            <td>Jumlah Sakit : {{ $sak->sick_count }}</td>
+                                            @endif
+                                            @endforeach
+
+                                            @foreach ($cuti as $cut)
+                                                @if ($cut->user_id == $user->user_id)
+                                                <td>Jumlah Cuti : {{ $cut->cuti_count }}</td>
+                                                @endif
+                                            @endforeach
+
+
+                                            @foreach ($dinas as $din)
+                                                @if ($din->user_id == $user->user_id)
+                                                    <td>Jumlah Dinas Luar : {{ $din->dinas_count }}</td>
+                                                @endif
+                                            @endforeach
+
+                                            @foreach ($rapat as $r)
+                                                @if ($r->user_id == $user->user_id)
+                                                    <td>Jumlah Rapat Dinas : {{ $r->rapat_Count }}</td>
+                                                @endif
+                                            @endforeach
+
+                                            @foreach ($train as $t)
+                                                @if ($t->user_id == $user->user_id)
+                                                    <td>Jumlah melakukan training/workshop : {{$t->train_count}}</td>
+                                                @endif
+                                            @endforeach
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <hr>
+                            @endforeach
+                        </div>
+
+                        <div style="float: right; width: 50%;">
+                            <h4>User List (Column 2)</h4>
+                            @foreach($users->chunk(ceil($users->count() / 2))[1] as $user)
+                                <p>ID: {{ $user->id }}</p>
+                                <p>Name: {{ $user->name }}</p>
+                                <p>No Hp : {{$user->no_hp}}</p>
+                                <hr>
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr>
+                                            @foreach($telat as $lambat)
+                                            @if ($lambat->user_id == $user->user_id)
+
+                                            <td>Jumlah Terlambat :  {{$lambat->late_count}}</td>
+                                            @endif
+                                            @endforeach
+
+                                            @foreach ($sakit as $sak)
+                                            @if ($sak->user_id == $user->user_id)
+                                            <td>Jumlah Sakit : {{ $sak->sick_count }}</td>
+                                            @endif
+                                            @endforeach
+
+                                            @foreach ($cuti as $cut)
+                                                @if ($cut->user_id == $user->user_id)
+                                                <td>Jumlah Cuti : {{ $cut->cuti_count }}</td>
+                                                @endif
+                                            @endforeach
+
+
+                                            @foreach ($dinas as $din)
+                                                @if ($din->user_id == $user->user_id)
+                                                    <td>Jumlah Dinas Luar : {{ $din->dinas_count }}</td>
+                                                @endif
+                                            @endforeach
+
+                                            @foreach ($rapat as $r)
+                                                @if ($r->user_id == $user->user_id)
+                                                    <td>Jumlah Rapat Dinas : {{ $r->rapat_Count }}</td>
+                                                @endif
+                                            @endforeach
+
+                                            @foreach ($train as $t)
+                                                @if ($t->user_id == $user->user_id)
+                                                    <td>Jumlah melakukan training/workshop : {{$t->train_count}}</td>
+                                                @endif
+                                            @endforeach
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            @endforeach
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

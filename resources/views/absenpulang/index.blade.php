@@ -14,19 +14,21 @@
                             <thead class="table-dark">
                                 <tr>
                                     <th scope="col">#</th>
+                                    <th scope="col">Tanggal</th>
                                     <th scope="col">Waktu Pulang</th>
                                     <th scope="col">Status</th>
-                                    <th></th>
+                                    <th scope="col">User ID</th>
                                     <th scope="col">AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
-                               @forelse ($absenpulang as $abs)
+                               @forelse ($absen_pulangs as $abs)
                                    <tr>
                                     <td>{{$abs->id}}</td>
+                                    <td></td>
                                     <td>{{$abs->waktu_pulang}}</td>
                                     <td>{{$abs->status_pulang}}</td>
-                                    <td></td>
+                                    <td>{{$abs->absensi->tanggal_pegawai}}</td>
                                     <td>
                                         <form action="{{route('absenpulang.destroy', $abs->id)}}" method="POST" enctype="multipart/form-data">
                                         @csrf

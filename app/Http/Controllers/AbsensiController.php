@@ -42,12 +42,12 @@ class AbsensiController extends Controller
         $this->validate($request,[
             'nama_pegawai' =>'required',
             'tanggal_pegawai'=>'required',
-
             'waktu_kehadiran'=> 'nullable',
             'keterangan_id' => 'required',
             'keterangan_tambahan'=>'nullable',
             'status'=> 'nullable',
             'user_id'=> 'required',
+
 
 
         ]);

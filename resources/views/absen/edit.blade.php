@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('content')
 
 <h1>FORM PENGEDITAN DATA ABSEN PEGAWAI</h1>

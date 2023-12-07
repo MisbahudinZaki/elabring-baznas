@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('absens', function (Blueprint $table) {
-            $table->date('waktu_pulang')->nullable()->after('status');
-            $table->string('status_pulang')->nullable()->after('waktu_pulang');
+        Schema::table('absenpulangs', function (Blueprint $table) {
+            $table->date('absens_id')->after('user_id')->nullable();
         });
     }
 
@@ -22,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('absens', function (Blueprint $table) {
+        Schema::table('absen_pulangs', function (Blueprint $table) {
             //
         });
     }

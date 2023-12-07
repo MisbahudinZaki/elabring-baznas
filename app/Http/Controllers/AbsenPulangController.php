@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 use App\Models\absen;
 use App\Models\absenpulang;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 class AbsenpulangController extends Controller
 {
     public function index(){
-        $absenpulang = absenpulang::latest()->paginate(10);
-        return view("absenpulang.index",compact("absenpulang"));
+        $absen_pulangs = absenpulang::with('absensi','user')->paginate(10);
+        return view("absenpulang.index",compact("absen_pulangs"));
     }
 
     public function create(){

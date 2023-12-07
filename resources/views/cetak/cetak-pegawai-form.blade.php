@@ -32,7 +32,6 @@
                         <thead>
                             <tr>
                                 <th scope="col">NAMA</th>
-                                <th scope="col">JABATAN</th>
                                 <th scope="col">TANGGAL</th>
                                 <th scope="col">KETERANGAN</th>
                                 <th scope="col">WAKTU KEHADIRAN</th>
@@ -46,13 +45,13 @@
                                 @foreach ($absensi as $abs)
                                 <tr>
                                 <td>{{$abs->nama_pegawai}}</td>
-                                <td>{{$abs->nama_jabatan}}</td>
+
                                 <td>{{$abs->tanggal_pegawai}}</td>
                                 <td>{{$abs->keterangan->keterangan}}</td>
                                 <td>{{$abs->waktu_kehadiran}}</td>
                                 <td>{{$abs->status}}</td>
-                                <td>{{$abs->absen_pulangs->waktu_pulang}}</td>
-                                <td>{{$abs->absen_pulangs->status_pulang}}</td>
+                                <td>{{$abs->absenpulang->waktu_pulang}}</td>
+                                <td>{{$abs->absenpulang->status_pulang}}</td>
                             </tr>
                                 @endforeach
 

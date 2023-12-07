@@ -17,9 +17,19 @@ class absenpulang extends Model
         'waktu_pulang',
         'status_pulang',
         'user_id',
+        'tanggal_pegawai'
     ];
 
     public function absen(){
         return $this->hasMany(absen::class);
+    }
+
+    public function absensi()
+    {
+        return $this->belongsTo(absen::class);
+    }
+
+    public function users(){
+        return $this->belongsTo(User::class);
     }
 }
