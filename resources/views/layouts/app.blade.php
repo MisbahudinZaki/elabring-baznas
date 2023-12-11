@@ -90,16 +90,16 @@
                 </p>
                 <hr>
                 <div class="text-center">
-                    <p><a style="width: 100%;" class="btn btn-primary" href="{{route('home')}}"><i class="fas fa-tachometer-alt"></i> dashboard</a></p>
-                    <p><a style="width: 100%;" class="btn btn-light" href="{{route('beranda.index')}}"><i class="fas fa-border-all"></i> absensi datang</a></p>
+                    <p><a style="width: 100%;" class="btn btn-primary" href="{{route('home')}}"><i class="fas fa-tachometer-alt"></i> DASHBOARD</a></p>
+                    <p><a style="width: 100%;" class="btn btn-light" href="{{route('beranda.index')}}"><i class="fas fa-border-all"></i> ABSENSI</a></p>
                     <p></p>
 
             </div>
 
             <div class="container">
-                <p><a style="color:aliceblue; text-decoration:none; font-size:20px" href="{{route('changepassword')}}"><i class="fas fa-edit"></i> Ganti Password</a></p>
-                <p><a style="color:aliceblue; text-decoration:none; font-size:20px" href="{{route('user.index')}}"><i class="fas fa-users"></i> Users</a></p>
-                <p><a style="color:aliceblue; text-decoration:none; font-size:20px" href="{{route('about')}}"><i class="far fa-building"></i> About</a></p>
+                <p><a style="color:aliceblue; text-decoration:none; font-size:20px" href="{{route('changepassword')}}"><i class="fas fa-edit"></i> GANTI PASSWORD</a></p>
+                <p><a style="color:aliceblue; text-decoration:none; font-size:20px" href="{{route('user.index')}}"><i class="fas fa-users"></i> USERS</a></p>
+                <p><a style="color:aliceblue; text-decoration:none; font-size:20px" href="{{route('about')}}"><i class="far fa-building"></i> ABOUT</a></p>
 
             </div>
 

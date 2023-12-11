@@ -36,7 +36,7 @@
                                         @endforeach
 
                                         @foreach ($pulangcepat as $pc)
-                                            @if ($pc->user_id == $user_id)
+                                            @if ($pc->user_id == $user->user_id)
                                                 <td>Jumlah Pulang Cepat : {{ $pc->fast_count }}</td>
                                             @endif
                                         @endforeach
@@ -58,6 +58,13 @@
                                                 <td>Jumlah melakukan training/workshop : {{$t->train_count}}</td>
                                             @endif
                                         @endforeach
+
+                                        @foreach ($tidakabspulang as $tab)
+                                            @if ($tab->user_id == $user->user_id)
+                                                <td>tidak absen pulang{{$tab->tab_count}}</td>
+                                            @endif
+                                        @endforeach
+
 
                                     </tr>
                                 </tbody>

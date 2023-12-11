@@ -100,7 +100,8 @@ class AbsensiController extends Controller
      */
     public function edit(absen $absen)
     {
-        return view('absen.edit', compact('absen'));
+        $ket=Keterangan::all();
+        return view('absen.edit', compact('absen','ket'));
     }
 
     /**

@@ -38,6 +38,7 @@
                                 <th scope="col">Status</th>
                                 <th scope="col">waktu_pulang</th>
                                 <th scope="col">status pulang</th>
+                                <th scope="col">View</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,8 +51,10 @@
                                 <td>{{$abs->keterangan->keterangan}}</td>
                                 <td>{{$abs->waktu_kehadiran}}</td>
                                 <td>{{$abs->status}}</td>
-                                <td>{{$abs->absenpulang->waktu_pulang}}</td>
-                                <td>{{$abs->absenpulang->status_pulang}}</td>
+                                <td>{{$abs->waktu_pulang}}</td>
+                                <td>{{$abs->status_pulang}}</td>
+                                <td>
+                                </td>
                             </tr>
                                 @endforeach
 

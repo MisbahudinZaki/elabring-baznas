@@ -44,8 +44,6 @@
                     <div class="form-group">
                         <label class="font-weight-bold">waktu kehadiran</label>
                         <input type="time" class="form-control @error('waktu_kehadiran') is-invalid  @enderror" value="{{old('waktu_kehadiran')}}" id="waktu_kehadiran" name="waktu_kehadiran"  required readonly>
-
-
                     </div>
  <!-- Include jQuery -->
 

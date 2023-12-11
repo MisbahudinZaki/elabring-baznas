@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 <p class="text-center"><img src="gambar/Logo_baznas-removebg-preview.png" width="150px" alt="logo"></p>
@@ -60,7 +60,7 @@
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
+                                        {{ __('Lupa Password') }}
                                     </a>
                                 @endif
                             </div>

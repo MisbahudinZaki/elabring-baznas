@@ -14,10 +14,14 @@
 
 
                     <div class="form-group">
-                        <label class="font-weight-bold">nama pegawai</label>
-                        <input type="text" class="form-control @error('nama_pegawai') is-invalid  @enderror" value="{{old('nama_pegawai', $absen->nama_pegawai)}}" name="nama_pegawai" placeholder="masukkan nama">
+                        <label class="font-weight-bold">id</label>
+                        <input type="number" class="form-control @error('user_id') is-invalid  @enderror" value="{{Auth::user()->id}}" name="user_id" readonly>
                     </div>
 
+                    <div class="form-group">
+                        <label class="font-weight-bold">nama</label>
+                        <input type="text" class="form-control @error('nama_pegawai') is-invalid  @enderror" value="{{Auth::user()->name}}" name="nama_pegawai" placeholder="masukkan nama">
+                    </div>
 
                     <div class="form-group">
                         <label class="font-weight-bold">tanggal</label>
@@ -25,39 +29,29 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="font-weight-bold">jabatan</label>
-                        <input type="text" name="nama_jabatan" class="form-control @error('nama_jabatan') is-invalid @enderror" value="{{old('nama_jabatan', $absen->nama_jabatan)}}" placeholder="masukan jabatan">
-                    </div>
-
-
-                    <div class="form-group">
                         <label class="font-weight-bold">keterangan</label>
-                        <input type="text" name="keterangan_pegawai" class="form-control @error('keterangan_pegawai') is-invalid @enderror" value="{{old('keterangan_pegawai',$absen->keterangan_pegawai)}}">
+                        <select class="form-control select2" style="width: 100%" name="keterangan_id" id="keterangan_id">
+                        <option disabled value>Pilih</option>
+                        @foreach ($ket as $item)
+                            <option value="{{ $item->id }}">{{ $item->keterangan }}</option>
+                        @endforeach
+                        </select>
                     </div>
-
 
                     <div class="form-group">
                         <label class="font-weight-bold">Keterangan Tambahan</label>
-                        <textarea class="form-control @error('keterangan_tambahan') is-invalid @enderror" name="keterangan_tambahan" id="keterangan_tambahan" rows="5" placeholder="diisi ketika berhalangan hadir atau sakit">{{old('keterangan_tambahan',$absen->keterangan_tambahan)}}</textarea>
+                        <textarea class="form-control @error('keterangan_tambahan') is-invalid @enderror" name="keterangan_tambahan" id="keterangan_tambahan" rows="5" placeholder="diisi ketika berhalangan hadir atau sakit">{{old('keterangan_tambahan', $absen->id)}}</textarea>
                     </div>
 
                     <div class="form-group">
                         <label class="font-weight-bold">waktu kehadiran</label>
-                        <input type="time" class="form-control @error('waktu_kehadiran') is-invalid  @enderror" value="{{old('waktu_kehadiran', $absen->waktu_kehadiran)}}" name="waktu_kehadiran">
+                        <input type="time" class="form-control @error('waktu_kehadiran') is-invalid  @enderror" id="waktu_kehadiran" value="{{old('waktu_kehadiran', $absen->waktu_kehadiran)}}" name="waktu_kehadiran"  required >
                     </div>
-
-
-
-                    <div class="form-group">
-                        <label for="waktu_pulang">waktu_pulang</label>
-                        <input type="time" class="form-control @error('waktu_pulang') is-invalid @enderror" value="{{old('waktu_pulang' , $absen->waktu_pulang)}}" name="waktu_pulang" id="">
-                    </div>
-
 
 
                     <button type="submit" class="btn btn-primary"><i class="fas fa-check-square"></i> save</button>
                     <button type="reset" class="btn btn-warning"><i class="fas fa-undo"></i> reset</button>
-                    <a href="{{route('absen.index')}}" class="btn btm-md btn-danger">cancel</a>
+                    <a href="{{route('beranda.index')}}" class="btn btm-md btn-danger">cancel</a>
                     </form>
                 </div>
             </div>

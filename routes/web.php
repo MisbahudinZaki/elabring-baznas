@@ -32,7 +32,7 @@ use Carbon\Carbon;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('auth.login');
 });
 
 //Route::get('/', [logincontroller::class, 'login'])->name('login');
@@ -59,10 +59,11 @@ Route::resource('keterangan', keterangancontroller::class)->middleware('auth');
 
 Route::get('/about', [officeprofileController::class, 'index'])->name('about');
 
-Route::get('/chat', [ChatController::class, 'index']);
+    Route::get('/chat', [ChatController::class, 'index']);
 Route::post('/chat/send', [ChatController::class, 'sendMessage']);
 
 Route::resource('pengguna', EditUserController::class)->middleware('admin');
+
 
 
     Route::get('/cetak', [cetakcontroller::class, 'cetak'])->name('cetak')->middleware('admin');
@@ -80,5 +81,3 @@ Route::get('/hitung', [HitungController::class,'index'])->name('hitung');
 Route::get('/opsi', [HitungController::class,'terlambat'])->name('opsi');
 
 Auth::routes();
-
-

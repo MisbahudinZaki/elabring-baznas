@@ -49,6 +49,11 @@ class UserController extends Controller
         return User::count() + 1;
     }
 
+    public function show($id)
+    {$user = user::find($id);
+        return view('cetak.cetak-pegawai-form', compact('user'));
+     }
+
     public function destroy($id)
     {
         $users=User::find($id);

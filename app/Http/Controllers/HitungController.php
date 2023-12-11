@@ -17,15 +17,15 @@ class HitungController extends Controller
     {
        $users = User::all();
        $absen = Absen::all();
-
+       $tidakabspulang = absen::where('waktu_pulang','')->groupBy('user_id')->select('user_id', \DB::raw('COALESCE(COUNT(status), 0) as tab_count'))->get();
        $telat = absen::where('status','terlambat')->groupBy('user_id')->select('user_id', \DB::raw('COALESCE(COUNT(status), 0) as late_count'))->get();
        $sakit = absen::where('keterangan_id','2')->groupBy('user_id')->select('user_id', \DB::raw('COALESCE(COUNT(keterangan_id), 0) as sick_count'))->get();
-       $pulangcepat = absenpulang::where('status_pulang','pulang cepat')->groupBy('user_id')->select('user_id', \DB::raw('coalesce(count(status_pulang),0) as fast_count'))->get();
+       $pulangcepat = absen::where('status_pulang','pulang cepat')->groupBy('user_id')->select('user_id', \DB::raw('coalesce(count(status_pulang),0) as fast_count'))->get();
        $cuti = absen::where('keterangan_id','3')->groupBy('user_id')->select('user_id', \DB::raw('COALESCE(COUNT(keterangan_id), 0) as cuti_count'))->get();
        $dinas = Absen::where('keterangan_id','4')->groupBy('user_id')->select('user_id', \DB::raw('COALESCE(COUNT(keterangan_id), 0) as dinas_count'))->get();
        $rapat = absen::where('keterangan_id','5')->groupBy('user_id')->select('user_id', \DB::raw('COALESCE(COUNT(keterangan_id), 0) as rapat_count'))->get();
        $train = Absen::where('keterangan_id','6')->groupBy('user_id')->select('user_id', \DB::raw('COALESCE(COUNT(keterangan_id), 0) as train_count'))->get();
-       return view("hitung", compact("users",'absen',"telat","sakit","pulangcepat",'cuti','dinas','rapat','train'));
+       return view("hitung", compact("users",'absen',"telat","sakit","pulangcepat",'cuti','dinas','rapat','train','tidakabspulang'));
 
     }
 

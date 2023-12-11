@@ -19,8 +19,14 @@ class cetakcontroller extends Controller
     }
 
     public function cetakform(){
-        $absensi=absen::with('absenpulang')->latest()->get();
+        $absensi=absen::latest()->get();
         return view('cetak.cetak-pegawai-form', compact('absensi'));
+    }
+
+    public function show($id)
+    {
+        $user = user::find($id);
+        return view('cetak.cetak-pegawai-form', compact('user'));
     }
 
     public function cetakpegawaipertanggal($tglawal, $tglakhir ){
