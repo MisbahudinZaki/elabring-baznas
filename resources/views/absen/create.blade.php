@@ -38,7 +38,8 @@
 
                     <div class="form-group">
                         <label class="font-weight-bold">Keterangan Tambahan</label>
-                        <textarea class="form-control @error('keterangan_tambahan') is-invalid @enderror" name="keterangan_tambahan" id="keterangan_tambahan" rows="5" placeholder="diisi ketika berhalangan hadir atau sakit">{{old('keterangan_tambahan')}}</textarea>
+                        <!--<input type="file" name="keterangan_tambahan" id="keterangan_tambahan" class="form-control @error('keterangan_tambahan') is-invalid @enderror" value="{{old('keterangan_tambahan')}}" >-->
+                        <textarea  name="keterangan_tambahan" id="keterangan_tambahan" rows="5" placeholder="diisi ketika berhalangan hadir atau sakit"value="{{old('keterangan_tambahan')}}"></textarea>
                     </div>
 
                     <div class="form-group">

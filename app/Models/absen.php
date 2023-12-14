@@ -67,4 +67,9 @@ class absen extends Model
                     ->get();
     }
 
+    public function countAbsenPulangKosong()
+    {
+        return $this->where('absen_pulang', '=', null)->count();
+    }
+
 }

@@ -29,4 +29,24 @@ class keterangancontroller extends Controller
 
         return redirect()->route('keterangan.index');
     }
+
+    public function edit(Keterangan $keterangan)
+    {
+        return view('keterangan.edit', compact('keterangan'));
+    }
+
+    public function update(Request $request,Keterangan $ket, $id)
+    {
+        $this->validate($request,[
+            'keterangan'=> 'required',
+        ]);
+
+        $keterangan= Keterangan::find($id);
+        $keterangan->update([
+            'keterangan'=>$request->keterangan,
+        ]);
+
+        return redirect()->route('keterangan.index');
+
+    }
 }

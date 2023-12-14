@@ -12,7 +12,7 @@
                             <thead class="table-dark">
                                 <tr>
                                     <th scope="col">Keterangan</th>
-                                    <th scope="col">Keterangan Tambahan</th>
+                                    <th scope="col">Penjelasan</th>
                                     <th></th>
                                     <th scope="col">Aksi</th>
                                 </tr>
@@ -27,7 +27,7 @@
                                             <form onsubmit="return confirm('Apakah anda yakin')" action="{{route('keterangan.destroy', $item->id)}}" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             @method('DELETE')
-
+                                            <a href="{{route('keterangan.edit', $item->id)}}" class="btn btn-primary">EDIT</a>
                                             <button type="submit" class="btn btn-danger">Hapus</button>
                                             </form>
                                         </td>

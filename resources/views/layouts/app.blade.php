@@ -83,7 +83,7 @@
         <main class="py-4">
 
         <div id="sidebar">
-            <button class="btn btn-mb btn-light" id="hide-sidebar"><i class="fas fa-sliders-h"></i></button>
+            <button class="btn btn-mb btn-light" id="hide-sidebar" align="center"><i class="fas fa-sliders-h"></i></button>
             <hr>
             <p><img src="gambar/Logo baznas.jpg" alt="logo" width="70">
                 BAZNAS KAB. PASAMAN
@@ -125,6 +125,8 @@
      <script src="{{ asset('js/custom.js') }}"></script>
 
      <script src="{{ asset('js/sidebar.js') }}"></script>
+
+     <script src="{{ asset('js/date.js') }}"></script>
 
      <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="js/myscript.js"></script>

@@ -27,13 +27,11 @@ class UserController extends Controller
             'email'=> 'required',
             'password'=> 'required',
             'status'=>'required',
-            'user_status'=>'required',
+            'user_status'=>'nullable',
         ]);
 
-        $data['user_id'] = $this->generateUserId();
-
         User::create([
-            'user_id'=>$data,
+            'user_id'=>$request->user_id,
             'name'=> $request->name,
             'email'=> $request->email,
             'password'=> Hash::make($request->password),
@@ -43,10 +41,6 @@ class UserController extends Controller
         ]);
 
         return redirect()->route('user.index')->with('success','data disimpan');
-    }
-
-    private function generateUserId(){
-        return User::count() + 1;
     }
 
     public function show($id)

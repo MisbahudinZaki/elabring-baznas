@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@extends('sidebar')
 @section('content')
     <div class="container mt-5">
         <div class="row">

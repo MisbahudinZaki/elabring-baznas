@@ -1,14 +1,13 @@
 @extends('layouts.app')
-@extends('sidebar')
 @section('content')
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
                 <div class="card border-0 shadow rounded">
-                    <div class="card-header">Daftar User</div>
+                    <div class="card-header">Daftar User BAZNAS</div>
                     <div class="card-body">
                         <table class="table table-striped">
-
+                            <a href="{{route('user.create')}}" class="btn btn-primary"><i class="fas fa-plus-square"></i> Tambah</a>
                             <thead class="table-dark">
                                 <tr>
                                 <th scope="col">Nama</th>

@@ -47,9 +47,6 @@ class AbsensiController extends Controller
             'keterangan_tambahan'=>'nullable',
             'status'=> 'nullable',
             'user_id'=> 'required',
-
-
-
         ]);
 
         $entryTime = $request->input('waktu_kehadiran');
@@ -116,12 +113,11 @@ class AbsensiController extends Controller
             'keterangan_pegawai' => 'required',
             'keterangan_tambahan'=>'nullable',
             'waktu_kehadiran'=>'nullable',
+            'status_pulang'=> 'nullable',
             'status'=> 'nullable',
 
 
         ]);
-
-
 
         $absen=absen::find($id);
         $absen->update([
@@ -132,7 +128,8 @@ class AbsensiController extends Controller
             'keterangan_pegawai'=>$request->keterangan_pegawai,
             'keterangan_tambahan'=>$request->keterangan_tambahan,
             'waktu_pulang'=> $request->waktu_ulang,
-            'status_pulang'=> $request->status_pulang
+            'status_pulang'=> $request->status_pulang,
+            'status'=> $request->status
         ]);
        // Alert :: success('success','data berhasil diedit');
         return redirect()->route('beranda.index');

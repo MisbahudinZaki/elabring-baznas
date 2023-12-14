@@ -18,7 +18,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="font-weight-bold">Keterangan</label>
+                            <label class="font-weight-bold">Penjelasan</label>
                             <textarea name="" id="" cols="30" rows="10" class="form-control @error('keterangan_tambahan')
                                 is-invalid
                             @enderror" value="{{old('keterangan_tambahan')}}" name="keterangan_tambahan" placeholder="keterangan_tambahan">
