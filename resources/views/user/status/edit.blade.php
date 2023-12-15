@@ -17,16 +17,23 @@
 
                             <div class="form-group">
                                 <label class="font-weight-bold">Status</label>
-                                <input type="text" class="form-control @error('status') is-invalid @enderror" value="{{old('status', $pengguna->status)}}" name="status">
+                                <select class="form-control @error('status') is-invalid @enderror" value="{{old('status', $pengguna->status)}}" name="status">
+                                <option value="pegawai">User</option>
+                                <option value="admin">Administrator</option>
+                                </select>
                             </div>
 
                             <div class="form-group">
                                 <label class="font-weight-bold">Status User</label>
-                                <input type="text" class="form-control @error('user_status') is-invalid @enderror" value="{{old('user_status', $pengguna->user_status)}}" name="user_status">
+                                <select class="form-control @error('user_status') is-invalid @enderror" value="{{old('user_status', $pengguna->user_status)}}" name="user_status">
+                                <option value="aktif">aktif</option>
+                                <option value="tidak aktif">tidak aktif</option>
+                                </select>
                             </div>
 
-                            <button type="reset" class="btn btn-warning">RESET</button>
-                            <button type="submit" class="btn btn-primary">SAVE</button>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-check-square"></i> SAVE</button>
+                            <button type="reset" class="btn btn-warning"><i class="fas fa-undo"></i> RESET</button>
+
 
                             </form>
                         </div>

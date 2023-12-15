@@ -51,7 +51,7 @@
                             <tr>
                                 <td></td>
                                 <td>:</td>
-                                <td><a href="{{route('user.edit', $user->id)}}" class="btn btn-primary">EDIT</a></td>
+                                <td><a href="{{route('user.edit', $user->id)}}" class="btn btn-primary"><i class="fas fa-edit"></i> EDIT</a></td>
                             </tr>
 
                         @endforeach

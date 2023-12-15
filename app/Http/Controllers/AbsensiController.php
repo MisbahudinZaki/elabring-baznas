@@ -41,13 +41,20 @@ class AbsensiController extends Controller
     {
         $this->validate($request,[
             'nama_pegawai' =>'required',
-            'tanggal_pegawai'=>'required',
+            'tanggal_pegawai'=>'required|date',
             'waktu_kehadiran'=> 'nullable',
             'keterangan_id' => 'required',
             'keterangan_tambahan'=>'nullable',
             'status'=> 'nullable',
             'user_id'=> 'required',
         ]);
+
+        $existData = absen::where('tanggal_pegawai', $request->tanggal_pegawai)->first();
+
+        if($existData){
+            Alert :: info('info','data sudah ada');
+            return redirect()->back()->with('error','data pada tanggal tersebut sudah ada');
+        }
 
         $entryTime = $request->input('waktu_kehadiran');
 

@@ -26,6 +26,17 @@ class absen extends Model
         'user_id',
         ];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if(static::where('tanggal_pegawai', $model->tanggal_pegawai)->exists()){
+                return false;
+            }
+        });
+    }
+
     public function user(){
         return $this->belongsTo(User::class);
     }
