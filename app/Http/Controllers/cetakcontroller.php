@@ -7,8 +7,10 @@ use App\Models\Absen_Pulang;
 use App\Models\absenpulang;
 use App\Models\Keterangan;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Queue\WorkerOptions;
+use Illuminate\Validation\Rules\Unique;
 
 class cetakcontroller extends Controller
 {
@@ -35,7 +37,12 @@ class cetakcontroller extends Controller
        // dd(["Tanggal Awal".$tglawal, "Tanggal Akhir :".$tglakhir])
 
        $users = User::all();
-       $hari = absen::whereBetween('tanggal_pegawai',[$tglawal, $tglakhir])->count();
+       $hari = absen::whereBetween('tanggal_pegawai',[$tglawal, $tglakhir])->get()
+       ->map(function ($item){
+        return Carbon::parse($item->tanggal_pegawai)->format('Y-m-d');
+       })->Unique()->count();
+
+
        $hadir = absen::where('keterangan_id','1')->whereBetween('tanggal_pegawai',[$tglawal, $tglakhir])->groupBy('user_id')->select('user_id', \DB::raw('COALESCE(COUNT(keterangan_id), 0) as hadir_count'))->get();
        $telat = absen::where('status','terlambat')->whereBetween('tanggal_pegawai',[$tglawal, $tglakhir])->groupBy('user_id')->select('user_id', \DB::raw('COALESCE(COUNT(status), 0) as late_count'))->get();
        $cuti = absen::where('keterangan_id','3')->whereBetween('tanggal_pegawai',[$tglawal, $tglakhir])->groupBy('user_id')->select('user_id', \DB::raw('COALESCE(COUNT(keterangan_id), 0) as cuti_count'))->get();

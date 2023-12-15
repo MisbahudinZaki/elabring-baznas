@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -70,6 +71,16 @@ class absen extends Model
     public function countAbsenPulangKosong()
     {
         return $this->where('absen_pulang', '=', null)->count();
+    }
+
+    public function countDaysBetweenDates($tglawal, $tglakhir)
+    {
+        return $this->whereBetween('tanggal_kehadiran', [$tglawal, $tglakhir])
+                    ->get()
+                    ->map(function ($item) {
+                        return Carbon::parse($item->tanggal_pegawai)->diffInDays(Carbon::parse($item->tanggal_pegawai));
+                    })
+                    ->sum();
     }
 
 }
