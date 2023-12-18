@@ -56,6 +56,10 @@ class User extends Authenticatable
     protected $table = 'users';
     protected $primaryKey = 'id';
 
+    public function isAktif(){
+        return $this->user_status === 'aktif';
+    }
+
     public function isAdmin()
 {
     return $this->status === 'admin'; // Gantilah dengan logika sesuai dengan penggunaan Anda.

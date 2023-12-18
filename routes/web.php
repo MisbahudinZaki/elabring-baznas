@@ -43,10 +43,12 @@ Route::post('actionlogin', [logincontroller::class, 'actionlogin'])->name('actio
 Route::get('/home', [homecontroller::class, 'index'])->name('home')->middleware('auth');
 Route::get('/gantiPassword',[UserController::class,'showchangepasswordform'])->middleware('auth');
 Route::post('/gantiPassword',[UserController::class,'changepassword'])->name('changepassword')->middleware('auth');
-Route::resource('user', UserController::class)->middleware('auth');
+
+Route::get('user/create', [UserController::class, 'create'])->name('user.create')->middleware('aktif');
 Route::resource('keterangan', keterangancontroller::class)->middleware('auth');
 
 
+Route::resource('user', UserController::class)->middleware('auth');
 
 
     Route::resource('absen', AbsensiController::class)->middleware('auth');

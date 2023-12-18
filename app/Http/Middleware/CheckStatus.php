@@ -5,9 +5,9 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use RealRashid\SweetAlert\Facades\Alert;
+use Auth;
 
-class AdminOnly
+class CheckStatus
 {
     /**
      * Handle an incoming request.
@@ -16,13 +16,12 @@ class AdminOnly
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(auth()->check() && auth()->user()->isAdmin()){
-        return $next($request);
-    }
+        $user = Auth::user();
 
-    Alert :: info('info','maaf, anda tidak memiliki akses');
-    return redirect()->route('home')->with('error', 'anda tidak memiliki akses');
-    }
-
+        if($user && in_array($user->user_status, $roles)){
+            return $next($request);
+        }
+        abort(403, 'Unauthorized.');
+        }
 
 }

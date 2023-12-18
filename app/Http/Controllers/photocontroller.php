@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class photocontroller extends Controller
 {
-    //
+    public function index()
+    {
+        
+    }
 }

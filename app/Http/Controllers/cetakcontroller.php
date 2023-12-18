@@ -37,11 +37,11 @@ class cetakcontroller extends Controller
        // dd(["Tanggal Awal".$tglawal, "Tanggal Akhir :".$tglakhir])
 
        $users = User::all();
+
        $hari = absen::whereBetween('tanggal_pegawai',[$tglawal, $tglakhir])->get()
        ->map(function ($item){
         return Carbon::parse($item->tanggal_pegawai)->format('Y-m-d');
        })->Unique()->count();
-
 
        $hadir = absen::where('keterangan_id','1')->whereBetween('tanggal_pegawai',[$tglawal, $tglakhir])->groupBy('user_id')->select('user_id', \DB::raw('COALESCE(COUNT(keterangan_id), 0) as hadir_count'))->get();
        $telat = absen::where('status','terlambat')->whereBetween('tanggal_pegawai',[$tglawal, $tglakhir])->groupBy('user_id')->select('user_id', \DB::raw('COALESCE(COUNT(status), 0) as late_count'))->get();

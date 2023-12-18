@@ -72,6 +72,8 @@ class Kernel extends HttpKernel
         // ...
         'checkUserStatus' => \App\Http\Middleware\CheckUserStatus::class,
         'admin' => \App\Http\Middleware\AdminOnly::class,
+        'aktif' => \App\Http\Middleware\AktifOnly::class,
+        'checkstatus' =>\App\Http\Middleware\CheckStatus::class,
     ];
 
     protected function schedule(Schedule $schedule)

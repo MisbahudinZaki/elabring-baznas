@@ -4,10 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use RealRashid\SweetAlert\Facades\Alert;
+use Symfony\Component\HttpFoundation\Response;
 
-class AdminOnly
+class AktifOnly
 {
     /**
      * Handle an incoming request.
@@ -16,13 +16,11 @@ class AdminOnly
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(auth()->check() && auth()->user()->isAdmin()){
-        return $next($request);
+        if(auth()->check() && auth()->user()->isAktif()){
+            return $next($request);
+        }
+
+        Alert::info('info','status anda tidak aktif');
+        return redirect()->route('login');
     }
-
-    Alert :: info('info','maaf, anda tidak memiliki akses');
-    return redirect()->route('home')->with('error', 'anda tidak memiliki akses');
-    }
-
-
 }
