@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Queue\WorkerOptions;
 use Illuminate\Validation\Rules\Unique;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class cetakcontroller extends Controller
 {
@@ -33,15 +34,26 @@ class cetakcontroller extends Controller
         return view('cetak.cetak-pegawai-form', compact('user'));
     }
 
+    public function destroy($id)
+    {
+        $absen = absen::find($id);
+        $absen->delete($id);
+        Alert :: success('success','data berhasil dihapus');
+        return redirect()->route('cetak-pegawai-form');
+    }
+
     public function cetakpegawaipertanggal($tglawal, $tglakhir ){
        // dd(["Tanggal Awal".$tglawal, "Tanggal Akhir :".$tglakhir])
 
        $users = User::all();
 
        $hari = absen::whereBetween('tanggal_pegawai',[$tglawal, $tglakhir])->get()
-       ->map(function ($item){
-        return Carbon::parse($item->tanggal_pegawai)->format('Y-m-d');
-       })->Unique()->count();
+
+       ->filter(function ($item){
+        return Carbon::parse($item->tanggal_pegawai)->dayOfWeek < 6;
+       })
+
+       ->Unique()->count();
 
        $hadir = absen::where('keterangan_id','1')->whereBetween('tanggal_pegawai',[$tglawal, $tglakhir])->groupBy('user_id')->select('user_id', \DB::raw('COALESCE(COUNT(keterangan_id), 0) as hadir_count'))->get();
        $telat = absen::where('status','terlambat')->whereBetween('tanggal_pegawai',[$tglawal, $tglakhir])->groupBy('user_id')->select('user_id', \DB::raw('COALESCE(COUNT(status), 0) as late_count'))->get();

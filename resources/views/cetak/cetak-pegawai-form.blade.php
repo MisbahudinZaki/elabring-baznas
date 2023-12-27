@@ -39,6 +39,7 @@
                                 <th scope="col">waktu_pulang</th>
                                 <th scope="col">status pulang</th>
                                 <th scope="col">View</th>
+                                <th scope="col">Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -122,6 +123,16 @@
                                    </div>
                                    </form>
 
+                                  </td>
+
+                                  <td>
+                                    <form onsubmit="return confirm('apakah anda yakin?')" action="{{route('cetak.destroy', $abs->id)}}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="btn btn-danger">Hapus</button>
+
+                                    </form>
                                   </td>
                             </tr>
                                 @endforeach

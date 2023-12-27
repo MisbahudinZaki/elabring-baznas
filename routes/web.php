@@ -71,6 +71,7 @@ Route::resource('pengguna', EditUserController::class)->middleware('admin');
     Route::get('/cetak', [cetakcontroller::class, 'cetak'])->name('cetak')->middleware('admin');
     Route::get('/cetakdata', [cetakcontroller::class, 'cetakform'])->name('cetak-pegawai-form')->middleware('admin');
     Route::get('cetakdatapertanggal/{tglawal}/{tglakhir}', [cetakcontroller::class, 'cetakpegawaipertanggal'])->name('cetakpegawaipertanggal')->middleware('admin');
+    Route::resource('cetak', cetakcontroller::class);
 
     Route::resource('beranda', absenberandacontroller::class);
 

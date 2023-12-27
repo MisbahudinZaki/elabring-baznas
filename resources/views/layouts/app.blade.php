@@ -23,9 +23,10 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <button style="width: 5%" class="btn btn-mb btn-dark" id="toggle-sidebar"><i class="fas fa-sliders-h"></i></button>
+            <button style="width: 7%" class="btn btn-mb btn-light" id="toggle-sidebar"><i class="fas fa-sliders-h"></i></button>
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+
+                <a class="navbar-brand" href="https://baznas.pasamankab.go.id/" target="_blank">
                    BAZNAS
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -91,7 +92,7 @@
                 <hr>
                 <div class="text-center">
                     <p><a style="width: 100%;" class="btn btn-primary" href="{{route('home')}}"><i class="fas fa-tachometer-alt"></i> DASHBOARD</a></p>
-                    <p><a style="width: 100%;" class="btn btn-light" href="{{route('beranda.index')}}"><i class="fas fa-border-all"></i> ABSENSI</a></p>
+                    <p><a style="width: 100%;" class="btn btn-light" href="{{route('beranda.index')}}"><i class="fas fa-border-all"></i> PRESENSI</a></p>
                     <p></p>
 
             </div>
